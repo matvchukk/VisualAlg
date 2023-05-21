@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Windows/Window2.qml</file>
+        <file>Windows/Window3.qml</file>
+        <file>Windows/WindowSort.qml</file>
+    </qresource>
+</RCC>
