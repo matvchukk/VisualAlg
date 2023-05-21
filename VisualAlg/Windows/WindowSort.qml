@@ -1,14 +1,126 @@
-import QtQuick 2.3
-import QtQuick.Controls 1.2
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.12
 
-Rectangle{
-    signal hideMeCliked()
-    id: secondDialog
-    visible: true
-    width: parent.width
-    height: parent.height
-    anchors.centerIn: parent
-    color: "blue"
+ Rectangle {
+     signal hideMeCliked()
+     id: secondDialog
+     visible: true
+     width: parent.width
+     height: parent.height
+     anchors.centerIn: parent
+
+
+    ListModel {
+        id: numberModel
+    }
+
+    Item {
+        anchors.fill: parent
+
+        Rectangle {
+            id: topRect
+            height: 100
+            width: parent.width
+            color: "#721F1F"
+            anchors.top: parent.top
+
+            Text {
+                text: "Sorting algorithms"
+                font.bold: true
+                font.pixelSize: 32
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: 35
+                color: "white"
+            }
+        }
+
+        Item {
+            width: parent.width
+            anchors.bottom: parent.bottom
+            anchors.top: topRect.bottom
+
+            Rectangle {
+                id: leftRect
+                width: 0.8 * parent.width
+                height: parent.height
+                anchors.left: parent.left
+
+
+                ListView {
+                    id: numberlist
+                    model: numberModel
+                    spacing: 5
+                     orientation: ListView.Horizontal
+                    anchors.centerIn: parent
+                    width: parent.width * 0.7
+                    height: parent.height * 0.2
+                    delegate: Rectangle {
+                        id: dlg
+
+                        width: textItem.implicitWidth + 10
+                        height: textItem.implicitHeight + 10
+
+                        property var number
+                        number: _number
+
+                       RowLayout  {
+
+                         anchors.centerIn: parent
+
+                            Text {
+                                id: textItem
+                                color: "black"
+                                font.bold: true
+                                font.pixelSize: 24
+                                text: dlg.number
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            Item {
+                id: rightItem
+                width: 0.2 * parent.width
+                height: parent.height
+                anchors.right: parent.right
+
+                Column {
+                    anchors.top: parent.top
+                    anchors.topMargin: 50
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    TextField {
+                        id: inputtext
+                        placeholderText: "Enter the number"
+                        height: 50
+                        width: rightItem.width * 0.7
+                        color: "black"
+                    }
+
+
+                    Button {
+                        text: "ADD"
+                        height: 50
+                        width: rightItem.width * 0.7
+
+                        onClicked: {
+                            numberModel.append({ "_number":  inputtext.text})
+                            inputtext.text=""
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     Button{
         id: back

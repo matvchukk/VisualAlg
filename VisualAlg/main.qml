@@ -6,10 +6,10 @@ import QtQuick.Layouts 1.12
 
 Window {
     id: root
-    width: 640
-    height: 480
+    width: 1240
+    height: 960
     visible: true
-    title: qsTr("Hello World")
+
 
     property var secondWindow: null
 
