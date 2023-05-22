@@ -3,14 +3,13 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.12
 
- Rectangle {
-     signal hideMeCliked()
-     id: secondDialog
-     visible: true
-     width: parent.width
-     height: parent.height
-     anchors.centerIn: parent
-
+Rectangle {
+    signal hideMeCliked()
+    id: secondDialog
+    visible: true
+    width: parent.width
+    height: parent.height
+    anchors.centerIn: parent
 
     ListModel {
         id: numberModel
@@ -48,37 +47,28 @@ import QtQuick.Layouts 1.12
                 height: parent.height
                 anchors.left: parent.left
 
-
                 ListView {
-                    id: numberlist
-                    model: numberModel
+                    id: numberList
+                    model: List
                     spacing: 5
-                     orientation: ListView.Horizontal
+                    orientation: ListView.Horizontal
                     anchors.centerIn: parent
                     width: parent.width * 0.7
                     height: parent.height * 0.2
                     delegate: Rectangle {
-                        id: dlg
-
                         width: textItem.implicitWidth + 10
                         height: textItem.implicitHeight + 10
 
-                        property var number
-                        number: _number
-
-                       RowLayout  {
-
-                         anchors.centerIn: parent
+                        RowLayout {
+                            anchors.centerIn: parent
 
                             Text {
                                 id: textItem
                                 color: "black"
                                 font.bold: true
                                 font.pixelSize: 24
-                                text: dlg.number
-
+                            text: modelData.items.toString()
                             }
-
                         }
                     }
                 }
@@ -93,7 +83,6 @@ import QtQuick.Layouts 1.12
                 Column {
                     anchors.top: parent.top
                     anchors.topMargin: 50
-
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     TextField {
@@ -104,28 +93,40 @@ import QtQuick.Layouts 1.12
                         color: "black"
                     }
 
-
                     Button {
                         text: "ADD"
                         height: 50
                         width: rightItem.width * 0.7
 
                         onClicked: {
-                            numberModel.append({ "_number":  inputtext.text})
-                            inputtext.text=""
+                            var number = parseInt(inputtext.text)
+                            if (!isNaN(number)) {
+                                List.addItem(number)
+                                inputtext.text = ""
+                            }
+                        }
+                    }
+                    Button {
+                        text: "swap"
+                        height: 50
+                        width: rightItem.width * 0.7
 
+                        onClicked: {
+
+                                List.swapItems(1,2)
+                            }
                         }
                     }
                 }
             }
         }
-    }
 
 
-    Button{
+    Button {
         id: back
         anchors.bottom: parent.bottom
         text: "Back"
         onClicked: secondDialog.hideMeCliked()
     }
 }
+
