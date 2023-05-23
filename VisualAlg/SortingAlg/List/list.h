@@ -42,6 +42,7 @@ public slots:
     }
 signals:
     void itemsChanged(const QList<int>& items);
+
 };
 
 #endif // LIST_H

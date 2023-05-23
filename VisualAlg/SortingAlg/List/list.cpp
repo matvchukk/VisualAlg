@@ -13,12 +13,12 @@ void List::addItem(int value)
 void List::swapItems(int index1, int index2)
 {
     if (index1 >= 0 && index1 < m_items.size() && index2 >= 0 && index2 < m_items.size()) {
-        // Міняємо місцями два елементи списку
+
         int temp = m_items[index1];
         m_items[index1] = m_items[index2];
         m_items[index2] = temp;
 
-        // Відправляємо сигнал про зміну списку
+
         emit itemsChanged(m_items);
     }
 }
@@ -33,5 +33,5 @@ int List::getValueAtIndex(int index) const
     if (index >= 0 && index < m_items.size()) {
         return m_items[index];
     }
-    return -1; // Повернути значення за замовчуванням, якщо індекс недійсний
+    return -1;
 }
