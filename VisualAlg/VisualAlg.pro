@@ -7,7 +7,8 @@ QT += quick
 SOURCES += \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
-        list.cpp \
+        SortingAlg/Sorts/managersort.cpp \
+        SortingAlg/Sorts/managersortwrapper.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -26,4 +27,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     SortingAlg/List/list.h \
     SortingAlg/List/list.h \
-    list.h
+    SortingAlg/Sorts/bubbleSort.h \
+    SortingAlg/Sorts/managersort.h \
+    SortingAlg/Sorts/managersortwrapper.h \
+    SortingAlg/Sorts/mergeSort.h \
+    SortingAlg/Sorts/sort.h

@@ -3,6 +3,9 @@
 #include <QQmlContext>
 
 #include "SortingAlg\List\list.h"
+#include "SortingAlg\Sorts\managersortwrapper.h"
+
+
 
 int main(int argc, char *argv[])
 {
@@ -10,9 +13,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    // Створюємо екземпляр MyList і реєструємо його в QML контексті
-    MyList myList;
-    engine.rootContext()->setContextProperty("List", &myList);
+    // Створюємо екземпляр List і реєструємо його в QML контексті
+    List array;
+     engine.rootContext()->setContextProperty("array", &array);
+     ManagerSortWrapper managerSortWrapper;
+     engine.rootContext()->setContextProperty("managerS", &managerSortWrapper);
+
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -26,3 +32,5 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
+
+

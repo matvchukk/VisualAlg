@@ -4,13 +4,13 @@
 
 
 
-void MyList::addItem(int value)
+void List::addItem(int value)
 {
     m_items.append(value);
     emit itemsChanged(m_items);
 }
 
-void MyList::swapItems(int index1, int index2)
+void List::swapItems(int index1, int index2)
 {
     if (index1 >= 0 && index1 < m_items.size() && index2 >= 0 && index2 < m_items.size()) {
         // Міняємо місцями два елементи списку
@@ -21,4 +21,17 @@ void MyList::swapItems(int index1, int index2)
         // Відправляємо сигнал про зміну списку
         emit itemsChanged(m_items);
     }
+}
+
+int List::getSize() const
+{
+    return m_items.size();
+}
+
+int List::getValueAtIndex(int index) const
+{
+    if (index >= 0 && index < m_items.size()) {
+        return m_items[index];
+    }
+    return -1; // Повернути значення за замовчуванням, якщо індекс недійсний
 }

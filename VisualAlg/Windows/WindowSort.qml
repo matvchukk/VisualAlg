@@ -49,7 +49,7 @@ Rectangle {
 
                 ListView {
                     id: numberList
-                    model: List
+                    model: array
                     spacing: 5
                     orientation: ListView.Horizontal
                     anchors.centerIn: parent
@@ -101,19 +101,24 @@ Rectangle {
                         onClicked: {
                             var number = parseInt(inputtext.text)
                             if (!isNaN(number)) {
-                                List.addItem(number)
+                                array.addItem(number)
                                 inputtext.text = ""
                             }
                         }
                     }
                     Button {
-                        text: "swap"
+                        text: "sort"
                         height: 50
                         width: rightItem.width * 0.7
 
                         onClicked: {
 
-                                List.swapItems(1,2)
+
+                              //array.setItems(managerS.commandSort(array))
+                            console.log(array.items.toString())
+                            console.log(managerS.commandSort(array))
+
+                            console.log(array.items.toString())
                             }
                         }
                     }
