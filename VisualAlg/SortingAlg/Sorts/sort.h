@@ -1,11 +1,15 @@
-#ifndef SORT_H
+/*#ifndef SORT_H
 #define SORT_H
 
-
+#include <QObject>
 #include <iostream>
 
 
-class Sort {
+class Sort: public QObject
+{
+  Q_OBJECT
+
+
 public:
 
     virtual void sort() = 0;
@@ -21,4 +25,4 @@ protected:
 
 
 };
-#endif // SORT_H
+#endif // SORT_H*/

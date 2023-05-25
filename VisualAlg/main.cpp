@@ -3,7 +3,7 @@
 #include <QQmlContext>
 
 #include "SortingAlg\List\list.h"
-#include "SortingAlg\Sorts\managersortwrapper.h"
+#include "SortingAlg\Sorts\bubbleSort.h"
 
 
 
@@ -16,8 +16,16 @@ int main(int argc, char *argv[])
     // Створюємо екземпляр List і реєструємо його в QML контексті
     List array;
      engine.rootContext()->setContextProperty("array", &array);
-     ManagerSortWrapper managerSortWrapper;
-     engine.rootContext()->setContextProperty("managerS", &managerSortWrapper);
+
+
+
+    // ManagerSortWrapper managerSortWrapper;
+    // engine.rootContext()->setContextProperty("managerS", &managerSortWrapper);
+
+
+
+     BubbleSort bubbleSort(&array);
+    engine.rootContext()->setContextProperty("bubbleSort", &bubbleSort);
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

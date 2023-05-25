@@ -7,8 +7,8 @@ QT += quick
 SOURCES += \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
-        SortingAlg/Sorts/managersort.cpp \
-        SortingAlg/Sorts/managersortwrapper.cpp \
+        SortingAlg/Sorts/bubbleSort.cpp \
+        SortingAlg/Sorts/quickSort.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -28,7 +28,6 @@ HEADERS += \
     SortingAlg/List/list.h \
     SortingAlg/List/list.h \
     SortingAlg/Sorts/bubbleSort.h \
-    SortingAlg/Sorts/managersort.h \
-    SortingAlg/Sorts/managersortwrapper.h \
     SortingAlg/Sorts/mergeSort.h \
+    SortingAlg/Sorts/quickSort.h \
     SortingAlg/Sorts/sort.h

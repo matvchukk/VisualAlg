@@ -6,7 +6,7 @@
 #include <QQmlContext>
 #include <QObject>
 #include <QList>
-#include  "SortingAlg\Sorts\sort.h"
+
 #include <iostream>
 class List : public QObject
 {
@@ -29,11 +29,6 @@ public slots:
     void swapItems(int index1, int index2);
     int getSize() const;
     int getValueAtIndex(int index) const;
-    void sort(Sort* sorttype)  {
-
-         sorttype->sort();
-
-       }
     void setItems(const QList<int>& newItems) {
         if (m_items != newItems) {
             m_items = newItems;

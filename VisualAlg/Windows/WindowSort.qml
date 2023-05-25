@@ -3,6 +3,9 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.12
 
+
+
+
 Rectangle {
     signal hideMeCliked()
     id: secondDialog
@@ -50,6 +53,7 @@ Rectangle {
                 ListView {
                     id: numberList
                     model: array
+
                     spacing: 5
                     orientation: ListView.Horizontal
                     anchors.centerIn: parent
@@ -73,6 +77,8 @@ Rectangle {
                     }
                 }
             }
+
+
 
             Item {
                 id: rightItem
@@ -106,21 +112,30 @@ Rectangle {
                             }
                         }
                     }
+
+
+                    Connections {
+                        target: bubbleSort
+                       onCallQml: {
+                          array=steplist
+                             console.log("Connection works")
+                            console.log(steplist);
+
+                        }
+                    }
                     Button {
-                        text: "sort"
-                        height: 50
-                        width: rightItem.width * 0.7
+                            text: "Sort"
+                            height: 50
+                            width: rightItem.width * 0.7
 
-                        onClicked: {
+                            onClicked: {
 
-
-                              //array.setItems(managerS.commandSort(array))
-                            console.log(array.items.toString())
-                            console.log(managerS.commandSort(array))
-
-                            console.log(array.items.toString())
+                                bubbleSort.sort()
                             }
                         }
+
+
+
                     }
                 }
             }
