@@ -8,6 +8,7 @@ SOURCES += \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/Sorts/bubbleSort.cpp \
+        SortingAlg/Sorts/mergeSort.cpp \
         SortingAlg/Sorts/quickSort.cpp \
         main.cpp
 
