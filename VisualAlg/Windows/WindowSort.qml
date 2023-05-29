@@ -11,7 +11,7 @@ Rectangle {
     anchors.centerIn: parent
 
 
-    property var values: [10, 5, 8, 3, 2]
+    property var values: [45,11,43,42,13,39,13,4,47,11]
     property var sortSteps: []
     property int currentStepIndex: 0
     Item {
@@ -52,11 +52,16 @@ Rectangle {
                            cellHeight: parent.height - 80
                            model: ListModel {
                                id: listModel
-                               ListElement { value: 10 }
-                               ListElement { value: 5 }
-                               ListElement { value: 8 }
-                               ListElement { value: 3 }
-                               ListElement { value: 2 }
+                               ListElement { value:45}
+                               ListElement { value: 11 }
+                               ListElement { value: 43 }
+                               ListElement { value:42 }
+                               ListElement { value: 13 }
+                               ListElement { value: 39 }
+                               ListElement { value: 13 }
+                               ListElement { value: 4 }
+                               ListElement { value: 47 }
+                               ListElement { value: 11 }
                            }
 
                            delegate: Rectangle {
@@ -84,17 +89,14 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 20
 
+                  TextField {
+                     id: inputValue
+                    height: 50
+                     width: rightItem.width * 0.7
+                    placeholderText: "Введіть число"
+                     }
 
-
-
-        TextField {
-            id: inputValue
-            height: 50
-            width: rightItem.width * 0.7
-            placeholderText: "Введіть число"
-        }
-
-        Button {
+          Button {
             id: addButton
             height: 50
             width: rightItem.width * 0.7
@@ -115,9 +117,9 @@ Rectangle {
             width: rightItem.width * 0.7
             text: "Сортувати"
             onClicked: {
-                bubbleSort()
+                bubble()
                 currentStepIndex = 0
-                updateGridView()
+
             }
         }
 
@@ -140,9 +142,7 @@ Rectangle {
             }
             enabled: currentStepIndex < sortSteps.length - 1
         }
-
-
-        }
+            }
 
 }
         Button {
@@ -152,32 +152,37 @@ Rectangle {
             onClicked: secondDialog.hideMeCliked()
         }
    }
+
     function addValue(number) {
         values.push(number)
         listModel.append({ value: number })
     }
 
-    function bubbleSort() {
+    function bubble() {
         sortSteps = []
+        sortSteps.push(values.slice())
+
+        for (var i=0;i<sortSteps[0].length;i++){
+              array.addItem(sortSteps[0][i] )
+        }
+
+       console.log( "Складність:"+ bubbleSort.sort())//вивести на екран
+
         var length = values.length
         var swapped = true
         while (swapped) {
             swapped = false
-
             for (var i = 0; i < length - 1; i++) {
                 if (values[i] > values[i + 1]) {
                     swapValues(i, i + 1)
 
+                    sortSteps.push(values.slice())
+                    updateGridView()
                     swapped = true
-
                 }
             }
-             sortSteps.push(values.slice())
-
             length--
         }
-
-
     }
 
     function swapValues(index1, index2) {
@@ -205,7 +210,7 @@ Rectangle {
     }
 
     function updateGridView() {
-        var stepValues = sortSteps[currentStepIndex]
+       var stepValues = sortSteps[currentStepIndex]
         for (var i = 0; i < values.length; i++) {
             listModel.setProperty(i, "value", stepValues[i])
         }
