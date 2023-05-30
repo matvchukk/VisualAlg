@@ -1,4 +1,4 @@
-#include "SortingAlg\Sorts\bubbleSort.h"
+#include "bubbleSort.h"
 
 int BubbleSort:: sort(){
 int  complexity=0;
@@ -11,9 +11,11 @@ int  complexity=0;
 
                if(nextValue < currentValue)
                {list->swapItems(j, j+1);
+                   emit callQml(list->items());
                    complexity=complexity+1;}
            }
        }
     return complexity;
 }
+
 

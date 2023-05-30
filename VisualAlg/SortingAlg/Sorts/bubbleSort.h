@@ -3,7 +3,7 @@
 
 #include "SortingAlg\List\list.h"
 #include <iostream>
-#include "sort.h"
+//#include "sort.h"
 #include <QTimer>
 
 ///Class implements sorting by Bubble sort.
@@ -23,6 +23,8 @@ public:
 public slots:
    int sort();
 
+signals:
+    void callQml(QList<int> steplist);
 };
 
 #endif

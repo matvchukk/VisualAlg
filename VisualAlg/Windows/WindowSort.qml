@@ -110,6 +110,20 @@ Rectangle {
                 }
             }
         }
+          Connections {
+                                target: bubbleSort
+                               onCallQml: {
+                                        values=[]
+                                       for (var i = 0; i < steplist.length; i++) {
+                                           values.push(steplist[i]);
+                                       }
+     sortSteps.push(values.slice())
+
+                        updateGridView()
+                                        currentStepIndex++
+
+                                  }
+                              }
 
         Button {
 
@@ -117,7 +131,8 @@ Rectangle {
             width: rightItem.width * 0.7
             text: "Сортувати"
             onClicked: {
-                bubble()
+                arrayIntoQlist(values.slice())
+                 bubbleSort.sort()
                 currentStepIndex = 0
 
             }
@@ -155,43 +170,18 @@ Rectangle {
             onClicked: secondDialog.hideMeCliked()
         }
    }
+    function arrayIntoQlist(list){
+
+        for (var i=0;i<list.length;i++){
+              array.addItem(list[i] )
+        }
+    }
 
     function addValue(number) {
         values.push(number)
         listModel.append({ value: number })
     }
 
-   function bubble( ) {
-        sortSteps = []
-        sortSteps.push(values.slice())
-        for (var i=0;i<sortSteps[0].length;i++){
-              array.addItem(sortSteps[0][i] )
-        }
-       console.log( "Складність:"+ bubbleSort.sort())//вивести на екран
-
-        var length = values.length
-        var swapped = true
-        for(var i = 0; i < length; i++){
-
-               for(var j = 0; j < (length - i) - 1; j++){
-
-                   if(values[j+1] < values[j]){
-                     swapValues(j, j + 1)
-                        console.log(currentStepIndex)
-                        currentStepIndex++
-                         sortSteps.push(values.slice())
-
-                         updateGridView()
-                   }
-               }
-           }
-    }
-
-    function swapValues(index1, index2) {
-        var temp = values[index1]
-        values[index1] = values[index2]
-        values[index2] = temp
-    }
 
     function previousStep() {
        // if (currentStepIndex > 0) {
@@ -217,5 +207,4 @@ Rectangle {
 
 
 }
-
 

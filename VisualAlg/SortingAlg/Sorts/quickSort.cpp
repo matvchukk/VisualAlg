@@ -19,7 +19,7 @@ int QuickSort::partition(int left, int right){
         if( currentValue <= pivot){
             i++;
             list->swapItems(i, j);
-            QTimer::singleShot(10000 * j, [this, j]() {
+            QTimer::singleShot(20000 * j, [this, j]() {
                            emit callQml(list->items());
                        });
             timer.start();
@@ -29,7 +29,7 @@ int QuickSort::partition(int left, int right){
         }
     }
      list->swapItems(i+1, right);
-     QTimer::singleShot(10000 , [this]() {
+     QTimer::singleShot(20000 , [this]() {
                     emit callQml(list->items());
                 });
      timer.start();

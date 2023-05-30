@@ -29,12 +29,9 @@ public slots:
     void swapItems(int index1, int index2);
     int getSize() const;
     int getValueAtIndex(int index) const;
-    void setItems(const QList<int>& newItems) {
-        if (m_items != newItems) {
-            m_items = newItems;
-            emit itemsChanged(m_items);
-        }
-    }
+    void setItems(const QList<int>& newItems);
+    void setValueAtIndex(int index,int value );
+
 signals:
     void itemsChanged(const QList<int>& items);
 

@@ -4,28 +4,30 @@
 
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
-
-
-
+#include "SortingAlg\Sorts\quickSort.h"
+#include "SortingAlg\Sorts\mergeSort.h"
+//#include "SortingAlg\Sorts\sort.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
     QQmlApplicationEngine engine;
 
-    // Створюємо екземпляр List і реєструємо його в QML контексті
+
+    // For sorting algorithm
     List array;
-     engine.rootContext()->setContextProperty("array", &array);
+    engine.rootContext()->setContextProperty("array", &array);
 
+       // Sort *bubbleSort;
+        //bubbleSort = new BubbleSort(&array);
+                 // bubble->sort();
 
-
-    // ManagerSortWrapper managerSortWrapper;
-    // engine.rootContext()->setContextProperty("managerS", &managerSortWrapper);
-
-
-
-     BubbleSort bubbleSort(&array);
+    BubbleSort bubbleSort(&array);
     engine.rootContext()->setContextProperty("bubbleSort", &bubbleSort);
+    QuickSort quickSort(&array);
+    engine.rootContext()->setContextProperty("quickSort", &quickSort);
+    MergeSort mergeSort(&array);
+    engine.rootContext()->setContextProperty("mergeSort", &mergeSort);
+   //
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
@@ -35,7 +37,6 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
 
-    // Завантажуємо QML-файл
     engine.load(url);
 
     return app.exec();

@@ -35,3 +35,16 @@ int List::getValueAtIndex(int index) const
     }
     return -1;
 }
+
+void List::setItems(const QList<int>& newItems) {
+    if (m_items != newItems) {
+        m_items = newItems;
+        emit itemsChanged(m_items);
+    }
+};
+
+void List::setValueAtIndex(int index,int value ){
+    m_items[index]=value;
+    emit itemsChanged(m_items);
+}
+
