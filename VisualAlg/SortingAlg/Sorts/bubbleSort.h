@@ -13,7 +13,7 @@ Q_OBJECT
 
 private:
 List *list;
-
+int  complexity;
 public:
     BubbleSort( List *list):
         list(list)
@@ -21,8 +21,10 @@ public:
         };
 
 public slots:
-   int sort();
-
+   void sort();
+   int getComplexity(){
+       return complexity;
+   }
 signals:
     void callQml(QList<int> steplist);
 };

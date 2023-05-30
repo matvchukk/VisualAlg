@@ -1,6 +1,6 @@
 #include "bubbleSort.h"
 
-int BubbleSort:: sort(){
+void BubbleSort:: sort(){
 int  complexity=0;
     for(int i = 0; i < list->getSize(); i++){
 
@@ -15,7 +15,8 @@ int  complexity=0;
                    complexity=complexity+1;}
            }
        }
-    return complexity;
+    this->complexity=complexity;
+    //return complexity;
 }
 
 
