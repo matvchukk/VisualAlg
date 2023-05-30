@@ -112,28 +112,77 @@ Rectangle {
         }
           Connections {
                                 target: bubbleSort
-                               onCallQml: {
+                                onCallQml: {
                                         values=[]
-                                       for (var i = 0; i < steplist.length; i++) {
+                                        for (var i = 0; i < steplist.length; i++) {
                                            values.push(steplist[i]);
-                                       }
-     sortSteps.push(values.slice())
-
-                        updateGridView()
+                                        }
+                                        sortSteps.push(values.slice())
+                                        updateGridView()
                                         currentStepIndex++
-
                                   }
                               }
 
         Button {
-
             height: 50
             width: rightItem.width * 0.7
-            text: "Сортувати"
+            text: "BubbleSort"
             onClicked: {
+
                 arrayIntoQlist(values.slice())
                  bubbleSort.sort()
                 currentStepIndex = 0
+               console.log( bubbleSort.getComplexity())
+
+            }
+        }
+        Connections {
+                              target: quickSort
+                              onCallQml: {
+                                      values=[]
+                                      for (var i = 0; i < steplist.length; i++) {
+                                         values.push(steplist[i]);
+                                      }
+                                      sortSteps.push(values.slice())
+                                      updateGridView()
+                                      currentStepIndex++
+                                }
+                            }
+        Button {
+            height: 50
+            width: rightItem.width * 0.7
+            text: "QuickSort"
+            onClicked: {
+               arrayIntoQlist(values.slice())
+                 quickSort.sort()
+                currentStepIndex = 0
+              // console.log( QuickSort.getComplexity())
+
+            }
+        }
+        Connections {
+                              target: mergeSort
+                              onCallQml: {
+                                      values=[]
+                                      for (var i = 0; i < steplist.length; i++) {
+                                         values.push(steplist[i]);
+                                      }
+                                      sortSteps.push(values.slice())
+                                      updateGridView()
+                                      currentStepIndex++
+                                }
+                            }
+        Button {
+            height: 50
+            width: rightItem.width * 0.7
+            text: "MergeSort"
+            onClicked: {
+
+                arrayIntoQlist(values.slice())
+                 mergeSort.sort()
+
+                currentStepIndex = 0
+              // console.log(   MergeSort.getComplexity())
 
             }
         }
@@ -170,12 +219,12 @@ Rectangle {
             onClicked: secondDialog.hideMeCliked()
         }
    }
-    function arrayIntoQlist(list){
 
+     function arrayIntoQlist(list){
         for (var i=0;i<list.length;i++){
               array.addItem(list[i] )
+             }
         }
-    }
 
     function addValue(number) {
         values.push(number)
@@ -204,7 +253,5 @@ Rectangle {
             listModel.append({ value: stepValues[i] })
         }
     }
-
-
 }
 

@@ -3,25 +3,32 @@
 
 #include <QObject>
 #include <iostream>
+#include "SortingAlg\List\list.h"
 
-
-class Sort: public QObject
+class Sort
 {
   Q_OBJECT
 
-
 public:
+    Sort(){
 
-    virtual void sort() = 0;
+    };
 
  public slots:
 
-    void slotSort(QList<int> steplist){
-       emit  callQml( steplist);
-    }
+   virtual void sort()=0;
 
-signals:
-    void callQml(QList<int> steplist);
+
+
+
+     // virtual void sort() ;
+    //void slotSort(QList<int> steplist){
+      // emit  callQml( steplist);
+    //}
+
+   //signals:
+   // void callQml(QList<int> steplist);
 };
 #endif // SORT_H
+
 */

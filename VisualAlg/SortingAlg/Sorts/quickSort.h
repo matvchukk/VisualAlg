@@ -17,7 +17,7 @@ public:
         list(list)
         {
          };
-    void quicksort(int left, int right);
+    void  quicksortlist(int left, int right);
     int partition(int left, int right);
 
 public slots:

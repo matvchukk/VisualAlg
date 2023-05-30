@@ -3,9 +3,9 @@
 
 #include "SortingAlg\List\list.h"
 #include <iostream>
-#include "sort.h"
-#include <QTimer>
-
+//#include "sort.h"
+//#include <QTimer>
+#include <QObject>
 class MergeSort: public QObject
 {
 Q_OBJECT

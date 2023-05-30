@@ -11,7 +11,7 @@ int  complexity=0;
 
                if(nextValue < currentValue)
                {list->swapItems(j, j+1);
-                   emit callQml(list->items());
+                  emit callQml(list->items());
                    complexity=complexity+1;}
            }
        }

@@ -4,8 +4,8 @@
 #include "SortingAlg\List\list.h"
 #include <iostream>
 //#include "sort.h"
-#include <QTimer>
-
+//#include <QTimer>
+#include <QObject>
 ///Class implements sorting by Bubble sort.
 class BubbleSort: public QObject
 {
@@ -21,12 +21,12 @@ public:
         };
 
 public slots:
-   void sort();
+ void sort();
    int getComplexity(){
        return complexity;
    }
 signals:
-    void callQml(QList<int> steplist);
+   void callQml(QList<int> steplist);
 };
 
 #endif

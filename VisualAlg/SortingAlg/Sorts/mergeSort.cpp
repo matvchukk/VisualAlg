@@ -2,6 +2,9 @@
 
 void MergeSort::sort(){
     mergesort(0, list->getSize()-1);
+    for(int i=0; i< list->getSize();i++){
+      std::cout<<  list->getValueAtIndex(i)<<std::endl;
+    }
 }
 
 void MergeSort::mergesort(int low, int high){
@@ -47,8 +50,10 @@ void MergeSort::merge(int low, int high, int mid) {
 
     for (int i = low; i <= high; i++) {
         list->setValueAtIndex(i, temp.at(i - low));
+
     }
 
 }
+
 
 

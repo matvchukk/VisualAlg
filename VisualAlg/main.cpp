@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
     List array;
     engine.rootContext()->setContextProperty("array", &array);
 
-       // Sort *bubbleSort;
-        //bubbleSort = new BubbleSort(&array);
-                 // bubble->sort();
+    //   Sort* Sort;
+      //  Sort = new MergeSort(&array);
+                //  bubble->sort();
 
     BubbleSort bubbleSort(&array);
     engine.rootContext()->setContextProperty("bubbleSort", &bubbleSort);
