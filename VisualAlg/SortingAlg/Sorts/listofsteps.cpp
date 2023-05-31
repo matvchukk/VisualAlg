@@ -1,8 +1,5 @@
 #include "listofsteps.h"
 
-void  ListOfSteps::print(){
-     std::cout<<"WOrkingg"<<std::endl;
-     }
 
 QList<Step*>  ListOfSteps:: getSteps()
     {

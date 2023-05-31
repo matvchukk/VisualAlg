@@ -7,18 +7,17 @@
 
 class ListOfSteps : public QObject
 {
-  //  Q_OBJECT
+    Q_OBJECT
 public:
     explicit ListOfSteps(QObject *parent = nullptr);
-
+    ListOfSteps(BubbleSort* bubblesort): bubblesort (bubblesort){};
 private:
     QList<Step *> steps_;
     BubbleSort* bubblesort;
 
 public slots:
-    void print();
+
     QList<Step*> getSteps() ;
-    ListOfSteps(BubbleSort* bubblesort): bubblesort (bubblesort){};
     void backup() ;
     void undo() ;
 };
