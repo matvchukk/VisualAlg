@@ -11,9 +11,11 @@ Rectangle {
     anchors.centerIn: parent
 
 
-    property var values: [45,11,43,42,13,39]
+    property var values: [6,2,3,5]
     property var sortSteps: []
-    property int currentStepIndex: 0
+    property int currentStepIndex: -2
+     property int first: -1
+     property int second: -1
     Item {
         anchors.fill: parent
 
@@ -52,12 +54,12 @@ Rectangle {
                            cellHeight: parent.height - 80
                            model: ListModel {
                                id: listModel
-                               ListElement { value:45}
-                               ListElement { value: 11 }
-                               ListElement { value: 43 }
-                               ListElement { value:42 }
-                               ListElement { value: 13 }
-                               ListElement { value: 39 }
+                               ListElement { value:6}
+                               ListElement { value: 2 }
+                               ListElement { value: 3 }
+                               ListElement { value:5 }
+                               //ListElement { value: 13 }
+                               //ListElement { value: 39 }
                                //ListElement { value: 13 }
                               // ListElement { value: 4 }
                             //   ListElement { value: 47 }
@@ -67,7 +69,7 @@ Rectangle {
                            delegate: Rectangle {
                                width: parent.width/ listModel.count
                                height: value * 10
-                               color: "steelblue"
+                             color: (index === first || index === second) ? "brown" : "steelblue"
                                border.color: "black"
                                Text {
                                    text: value
@@ -118,6 +120,9 @@ Rectangle {
                                            values.push(steplist[i]);
                                         }
                                         sortSteps.push(values.slice())
+                                        first=a
+                                        second=b
+                                        console.log(values.slice())
                                         updateGridView()
                                         currentStepIndex++
                                   }
@@ -128,9 +133,11 @@ Rectangle {
             width: rightItem.width * 0.7
             text: "BubbleSort"
             onClicked: {
-
+ currentStepIndex = 0
                 arrayIntoQlist(values.slice())
                  bubbleSort.sort()
+                first=-1
+                second=-1
                 currentStepIndex = 0
                console.log( bubbleSort.getComplexity())
 
@@ -153,6 +160,7 @@ Rectangle {
             width: rightItem.width * 0.7
             text: "QuickSort"
             onClicked: {
+                currentStepIndex = 0
                arrayIntoQlist(values.slice())
                  quickSort.sort()
                 currentStepIndex = 0
@@ -221,6 +229,7 @@ Rectangle {
    }
 
      function arrayIntoQlist(list){
+
         for (var i=0;i<list.length;i++){
               array.addItem(list[i] )
              }

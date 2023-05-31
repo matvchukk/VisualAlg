@@ -26,7 +26,7 @@ public slots:
        return complexity;
    }
 signals:
-   void callQml(QList<int> steplist);
+   void callQml(QList<int> steplist, int a, int b);
 };
 
 #endif
