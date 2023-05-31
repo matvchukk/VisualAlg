@@ -61,9 +61,9 @@ Window {
         //the second algorithm
         Button{
             id: button2
-            text: "Alg2"
+            text: "Pattern Searching"
             onClicked: {
-                createSecondWindow("../Windows/Window2.qml")
+                createSecondWindow("../Windows/WindowPatternSearching.qml")
             }
         }
 

@@ -6,6 +6,7 @@
 #include "SortingAlg\Sorts\bubbleSort.h"
 #include "SortingAlg\Sorts\quickSort.h"
 #include "SortingAlg\Sorts\mergeSort.h"
+#include "PatternsSearching\RabinKarp.h"
 //#include "SortingAlg\Sorts\sort.h"
 int main(int argc, char *argv[])
 {
@@ -28,6 +29,8 @@ int main(int argc, char *argv[])
     MergeSort mergeSort(&array);
     engine.rootContext()->setContextProperty("mergeSort", &mergeSort);
    //
+    RabinKarp rabinKarp;
+    engine.rootContext()->setContextProperty("rabinKarp", &rabinKarp);
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
