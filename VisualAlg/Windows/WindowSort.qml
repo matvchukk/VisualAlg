@@ -16,6 +16,7 @@ Rectangle {
     property int currentStepIndex: -2
      property int first: -1
      property int second: -1
+    property int indexStep: 0
     Item {
         anchors.fill: parent
 
@@ -58,12 +59,6 @@ Rectangle {
                                ListElement { value: 2 }
                                ListElement { value: 3 }
                                ListElement { value:5 }
-                               //ListElement { value: 13 }
-                               //ListElement { value: 39 }
-                               //ListElement { value: 13 }
-                              // ListElement { value: 4 }
-                            //   ListElement { value: 47 }
-                             //  ListElement { value: 11 }
                            }
 
                            delegate: Rectangle {
@@ -115,16 +110,19 @@ Rectangle {
           Connections {
                                 target: bubbleSort
                                 onCallQml: {
-                                        values=[]
-                                        for (var i = 0; i < steplist.length; i++) {
-                                           values.push(steplist[i]);
-                                        }
-                                        sortSteps.push(values.slice())
-                                        first=a
-                                        second=b
-                                        console.log(values.slice())
-                                        updateGridView()
+                                    listofsteps.backup;
+
+                                      //  values=[]
+                                       // for (var i = 0; i < steplist.length; i++) {
+                                       //    values.push(steplist[i]);
+                                       // }
+                                       // sortSteps.push(values.slice())
+                                       // first=a
+                                       // second=b
+                                        //console.log(values.slice())
+
                                         currentStepIndex++
+                                    console.log(currentStepIndex)
                                   }
                               }
 
@@ -133,13 +131,21 @@ Rectangle {
             width: rightItem.width * 0.7
             text: "BubbleSort"
             onClicked: {
- currentStepIndex = 0
-                arrayIntoQlist(values.slice())
-                 bubbleSort.sort()
-                first=-1
-                second=-1
-                currentStepIndex = 0
-               console.log( bubbleSort.getComplexity())
+            currentStepIndex = 0
+            arrayIntoQlist(values.slice())
+
+             listofsteps.print()
+             bubbleSort.sort()
+                //restore(listofsteps.getSteps[currentStepIndex]);
+              //  for (var i = 0; i < bubbleSort.getArray.lenght; i++) {
+              //      listModel.append({ value:  bubbleSort.getArray()[i] })
+              //  }
+               // first=bubbleSort.getIndexLeft
+               // second=bubbleSort.getIndexRight
+             first=-1
+             second=-1
+             currentStepIndex = 0
+             //console.log( bubbleSort.getComplexity())
 
             }
         }
@@ -201,7 +207,12 @@ Rectangle {
             text: "Назад"
             onClicked: {
                 console.log(currentStepIndex)
-                previousStep()
+                restore(listofsteps.getSteps()[currentStepIndex]);
+                for (var i = 0; i < bubbleSort.getArray().lenght; i++) {
+                    listModel.append({ value:  bubbleSort.getArray()[i] })
+                }
+                first=bubbleSort.getIndexLeft
+                second=bubbleSort.getIndexRight
             }
           //  enabled: currentStepIndex > 0
         }
@@ -229,7 +240,7 @@ Rectangle {
    }
 
      function arrayIntoQlist(list){
-
+        array.clearItems()
         for (var i=0;i<list.length;i++){
               array.addItem(list[i] )
              }
@@ -255,12 +266,12 @@ Rectangle {
         }
     }
 
-    function updateGridView() {
+    /*function updateGridView() {
         listModel.clear()
         var stepValues = sortSteps[currentStepIndex]
         for (var i = 0; i < stepValues.length; i++) {
             listModel.append({ value: stepValues[i] })
         }
-    }
+    }*/
 }
 

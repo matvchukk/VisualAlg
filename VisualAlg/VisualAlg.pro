@@ -8,8 +8,10 @@ SOURCES += \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/Sorts/bubbleSort.cpp \
+        SortingAlg/Sorts/listofsteps.cpp \
         SortingAlg/Sorts/mergeSort.cpp \
         SortingAlg/Sorts/quickSort.cpp \
+        SortingAlg/Sorts/step.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -29,6 +31,8 @@ HEADERS += \
     SortingAlg/List/list.h \
     SortingAlg/List/list.h \
     SortingAlg/Sorts/bubbleSort.h \
+    SortingAlg/Sorts/listofsteps.h \
     SortingAlg/Sorts/mergeSort.h \
     SortingAlg/Sorts/quickSort.h \
-    SortingAlg/Sorts/sort.h
+    SortingAlg/Sorts/sort.h \
+    SortingAlg/Sorts/step.h

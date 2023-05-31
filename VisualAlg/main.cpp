@@ -6,7 +6,9 @@
 #include "SortingAlg\Sorts\bubbleSort.h"
 #include "SortingAlg\Sorts\quickSort.h"
 #include "SortingAlg\Sorts\mergeSort.h"
-//#include "SortingAlg\Sorts\sort.h"
+#include "SortingAlg\Sorts\listofsteps.h"
+
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -16,13 +18,10 @@ int main(int argc, char *argv[])
     // For sorting algorithm
     List array;
     engine.rootContext()->setContextProperty("array", &array);
-
-    //   Sort* Sort;
-      //  Sort = new MergeSort(&array);
-                //  bubble->sort();
-
     BubbleSort bubbleSort(&array);
     engine.rootContext()->setContextProperty("bubbleSort", &bubbleSort);
+    ListOfSteps listofsteps(&bubbleSort);
+    engine.rootContext()->setContextProperty("listofsteps", &listofsteps);
     QuickSort quickSort(&array);
     engine.rootContext()->setContextProperty("quickSort", &quickSort);
     MergeSort mergeSort(&array);

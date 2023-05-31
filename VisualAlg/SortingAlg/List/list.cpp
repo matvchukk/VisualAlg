@@ -1,7 +1,11 @@
 #include  "SortingAlg\List\list.h"
 #include <QDebug>
 
-
+void List::clearItems()
+{
+    m_items.clear();
+    emit itemsChanged(m_items);
+}
 
 
 void List::addItem(int value)
