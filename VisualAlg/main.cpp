@@ -4,10 +4,6 @@
 
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
-#include "SortingAlg\Sorts\selectionSort.h"
-#include "SortingAlg\Sorts\listofsteps.h"
-#include "SortingAlg\Sorts\sort.h"
-
 
 int main(int argc, char *argv[])
 {
@@ -33,6 +29,8 @@ int main(int argc, char *argv[])
 
 
    //
+    RabinKarp rabinKarp;
+    engine.rootContext()->setContextProperty("rabinKarp", &rabinKarp);
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
