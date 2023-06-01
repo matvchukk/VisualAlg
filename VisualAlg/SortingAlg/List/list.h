@@ -11,7 +11,7 @@
 class List : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QList<int> items READ items NOTIFY itemsChanged)
+    //Q_PROPERTY(QList<int> items READ items NOTIFY itemsChanged)
 
 private:
     QList<int> m_items;
@@ -19,18 +19,21 @@ private:
 public:
     List(QObject *parent = nullptr) : QObject(parent) {}
 
+
+public slots:
+
     QList<int> items() const
     {
         return m_items;
     }
-
-public slots:
+    void clearItems();
     void addItem(int value);
     void swapItems(int index1, int index2);
     int getSize() const;
     int getValueAtIndex(int index) const;
     void setItems(const QList<int>& newItems);
     void setValueAtIndex(int index,int value );
+    bool isListSorted();
 
 signals:
     void itemsChanged(const QList<int>& items);

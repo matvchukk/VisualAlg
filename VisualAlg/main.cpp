@@ -4,10 +4,7 @@
 
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
-#include "SortingAlg\Sorts\quickSort.h"
-#include "SortingAlg\Sorts\mergeSort.h"
-#include "PatternsSearching\RabinKarp.h"
-//#include "SortingAlg\Sorts\sort.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -18,16 +15,19 @@ int main(int argc, char *argv[])
     List array;
     engine.rootContext()->setContextProperty("array", &array);
 
-    //   Sort* Sort;
-      //  Sort = new MergeSort(&array);
-                //  bubble->sort();
+    Sort* bubbleSort= new BubbleSort(&array);
+    engine.rootContext()->setContextProperty("bubbleSort", bubbleSort);
 
-    BubbleSort bubbleSort(&array);
-    engine.rootContext()->setContextProperty("bubbleSort", &bubbleSort);
-    QuickSort quickSort(&array);
-    engine.rootContext()->setContextProperty("quickSort", &quickSort);
-    MergeSort mergeSort(&array);
-    engine.rootContext()->setContextProperty("mergeSort", &mergeSort);
+    Sort* selectionSort= new SelectionSort(&array);
+    engine.rootContext()->setContextProperty("selectionSort", selectionSort);
+
+    ListOfSteps listofsteps(bubbleSort);
+    engine.rootContext()->setContextProperty("listofsteps", &listofsteps);
+
+    ListOfSteps listofstepsS(selectionSort);
+    engine.rootContext()->setContextProperty("listofstepsS", &listofstepsS);
+
+
    //
     RabinKarp rabinKarp;
     engine.rootContext()->setContextProperty("rabinKarp", &rabinKarp);

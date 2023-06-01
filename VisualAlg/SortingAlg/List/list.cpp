@@ -1,7 +1,11 @@
 #include  "SortingAlg\List\list.h"
 #include <QDebug>
 
-
+void List::clearItems()
+{
+    m_items.clear();
+    emit itemsChanged(m_items);
+}
 
 
 void List::addItem(int value)
@@ -47,4 +51,14 @@ void List::setValueAtIndex(int index,int value ){
     m_items[index]=value;
     emit itemsChanged(m_items);
 }
+
+bool List::isListSorted() {
+    for (int i = 1; i < this->getSize(); i++) {
+        if (this->getValueAtIndex(i) <this->getValueAtIndex(i-1)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 

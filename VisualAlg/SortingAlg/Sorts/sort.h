@@ -1,11 +1,12 @@
-/*#ifndef SORT_H
+#ifndef SORT_H
 #define SORT_H
 
 #include <QObject>
 #include <iostream>
 #include "SortingAlg\List\list.h"
+#include "step.h"
 
-class Sort
+class Sort: public QObject
 {
   Q_OBJECT
 
@@ -17,18 +18,11 @@ public:
  public slots:
 
    virtual void sort()=0;
+   virtual Step  *Save()=0;
 
 
+signals:
+   void callQml();
 
-
-     // virtual void sort() ;
-    //void slotSort(QList<int> steplist){
-      // emit  callQml( steplist);
-    //}
-
-   //signals:
-   // void callQml(QList<int> steplist);
 };
 #endif // SORT_H
-
-*/
