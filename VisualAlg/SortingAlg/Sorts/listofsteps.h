@@ -16,10 +16,12 @@ private:
     BubbleSort* bubblesort;
 
 public slots:
-
-    QList<Step*> getSteps() ;
+    int getIndexLeft(int index);
+    int getIndexRight(int index);
+    QList<int> getList(int index);
+    Step* getSteps(int index) ;
     void backup() ;
-    void undo() ;
+
 };
 
 #endif // LISTOFSTEPS_H

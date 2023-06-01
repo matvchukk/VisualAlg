@@ -10,13 +10,12 @@ Rectangle {
     height: parent.height
     anchors.centerIn: parent
 
-
-    property var values: [6,2,3,5]
-    property var sortSteps: []
-    property int currentStepIndex: -2
+     property var values: [6,2,3,5]
+     property int currentStepIndex: -2
      property int first: -1
      property int second: -1
-    property int indexStep: 0
+     property int sorted: 0
+
     Item {
         anchors.fill: parent
 
@@ -90,7 +89,7 @@ Rectangle {
                      id: inputValue
                     height: 50
                      width: rightItem.width * 0.7
-                    placeholderText: "Введіть число"
+                    placeholderText: "Enter a number"
                      }
 
           Button {
@@ -98,7 +97,7 @@ Rectangle {
             height: 50
             width: rightItem.width * 0.7
 
-            text: "Додати"
+            text: "Add"
             onClicked: {
                 var inputNumber = parseInt(inputValue.text)
                 if (!isNaN(inputNumber)) {
@@ -107,24 +106,15 @@ Rectangle {
                 }
             }
         }
+
           Connections {
-                                target: bubbleSort
-                                onCallQml: {
-                                    listofsteps.backup;
-
-                                      //  values=[]
-                                       // for (var i = 0; i < steplist.length; i++) {
-                                       //    values.push(steplist[i]);
-                                       // }
-                                       // sortSteps.push(values.slice())
-                                       // first=a
-                                       // second=b
-                                        //console.log(values.slice())
-
-                                        currentStepIndex++
-                                    console.log(currentStepIndex)
-                                  }
-                              }
+                         target: bubbleSort
+                         onCallQml: {
+                                sorted=1
+                                listofsteps.backup();
+                                currentStepIndex++
+                                    }
+                                }
 
         Button {
             height: 50
@@ -133,22 +123,16 @@ Rectangle {
             onClicked: {
             currentStepIndex = 0
             arrayIntoQlist(values.slice())
-
-             listofsteps.print()
-             bubbleSort.sort()
-                //restore(listofsteps.getSteps[currentStepIndex]);
-              //  for (var i = 0; i < bubbleSort.getArray.lenght; i++) {
-              //      listModel.append({ value:  bubbleSort.getArray()[i] })
-              //  }
-               // first=bubbleSort.getIndexLeft
-               // second=bubbleSort.getIndexRight
-             first=-1
-             second=-1
-             currentStepIndex = 0
-             //console.log( bubbleSort.getComplexity())
-
+            listofsteps.backup();
+            currentStepIndex++
+            bubbleSort.sort()
+            updateGridView()
+            first=-1
+            second=-1
             }
+            enabled: sorted===0
         }
+
         Connections {
                               target: quickSort
                               onCallQml: {
@@ -204,37 +188,49 @@ Rectangle {
         Button {
             height: 50
             width: rightItem.width * 0.7
-            text: "Назад"
+            text: "Back"
             onClicked: {
-                console.log(currentStepIndex)
-                restore(listofsteps.getSteps()[currentStepIndex]);
-                for (var i = 0; i < bubbleSort.getArray().lenght; i++) {
-                    listModel.append({ value:  bubbleSort.getArray()[i] })
-                }
-                first=bubbleSort.getIndexLeft
-                second=bubbleSort.getIndexRight
+                currentStepIndex--
+                updateGridView()
             }
-          //  enabled: currentStepIndex > 0
+            enabled: currentStepIndex > 0
         }
-
 
         Button {
             height: 50
             width: rightItem.width * 0.7
-            text: "Вперед"
+            text: "Forward"
             onClicked: {
-                console.log(currentStepIndex)
-                nextStep()
-            }
-           // enabled: currentStepIndex < sortSteps.length - 1
-        }
+
+                if (sorted===0){
+                    currentStepIndex = 0
+                    arrayIntoQlist(values.slice())
+                    bubbleSort.sort()
+                    currentStepIndex = 0}
+
+                currentStepIndex++
+                updateGridView()
             }
 
-}
+        }
+        Button {
+            height: 50
+            width: rightItem.width * 0.7
+            text: "Reset"
+            onClicked: {
+                currentStepIndex=1
+                updateGridView()
+                sorted=0
+            }
+
+        }
+        }
+
+         }
         Button {
             id: back
             anchors.bottom: parent.bottom
-            text: "Back"
+            text: "Menu"
             onClicked: secondDialog.hideMeCliked()
         }
    }
@@ -251,27 +247,18 @@ Rectangle {
         listModel.append({ value: number })
     }
 
-
-    function previousStep() {
-       // if (currentStepIndex > 0) {
-            currentStepIndex--
-            updateGridView()
-       // }
-    }
-
-    function nextStep() {
-        if (currentStepIndex < sortSteps.length - 1) {
-            currentStepIndex++
-            updateGridView()
-        }
-    }
-
-    /*function updateGridView() {
+    function updateGridView() {
         listModel.clear()
-        var stepValues = sortSteps[currentStepIndex]
-        for (var i = 0; i < stepValues.length; i++) {
-            listModel.append({ value: stepValues[i] })
+        values=[]
+        first=listofsteps.getIndexLeft(currentStepIndex-1)
+        second=listofsteps.getIndexRight(currentStepIndex-1)
+        for (var i = 0; i < listofsteps.getList(currentStepIndex-1).length; i++) {
+           values.push(listofsteps.getList(currentStepIndex-1)[i]);
         }
-    }*/
+        for (var i = 0; i <values.length; i++) {
+            listModel.append({ value: values[i] })
+        }
+
+}
 }
 

@@ -1,27 +1,33 @@
 #include "listofsteps.h"
 
-
-QList<Step*>  ListOfSteps:: getSteps()
-    {
-    return steps_;
+Step* ListOfSteps::getSteps(int index)
+{
+    if (index >= 0 && index < steps_.size()) {
+        return steps_.at(index);
+    } else {
+        return nullptr;
     }
+}
+
+int ListOfSteps::getIndexLeft(int index){
+    Step* Memento=this->getSteps( index);
+    return Memento->copyIndexLeft;
+}
+
+int ListOfSteps::getIndexRight(int index){
+    Step* Memento=this->getSteps( index);
+    return Memento->copyIndexRight;
+}
+
+QList<int> ListOfSteps::getList(int index){
+    Step* Memento=this->getSteps( index);
+    return Memento->copylist;
+}
 
 void ListOfSteps:: backup() {
-
     this->steps_.push_back(this->bubblesort->Save());
     }
 
-void ListOfSteps::undo() {
-    if (!this->steps_.size()) {
-     return;
-    }
-    Step* memento = this->steps_.back();
-    this->steps_.pop_back();
 
-    try {
-    this->bubblesort ->restore(memento);
-    } catch (...) {
-    this->undo();
-    }
-}
+
 

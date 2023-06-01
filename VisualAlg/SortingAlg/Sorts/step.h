@@ -3,14 +3,16 @@
 
 #include <QObject>
 
-class Step
+class Step: public QObject
 {
+     Q_OBJECT
 public:
     QList<int> copylist;
     int copyIndexLeft;
     int copyIndexRight;
 
  Step(QList<int> copylist, int copyIndexLeft, int copyIndexRight );
+ Step( ){};
 
 };
 

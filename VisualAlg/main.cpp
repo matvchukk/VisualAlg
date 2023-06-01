@@ -7,6 +7,7 @@
 #include "SortingAlg\Sorts\quickSort.h"
 #include "SortingAlg\Sorts\mergeSort.h"
 #include "SortingAlg\Sorts\listofsteps.h"
+#include "SortingAlg\Sorts\step.h"
 
 
 int main(int argc, char *argv[])
@@ -22,6 +23,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("bubbleSort", &bubbleSort);
     ListOfSteps listofsteps(&bubbleSort);
     engine.rootContext()->setContextProperty("listofsteps", &listofsteps);
+    Step step;
+    engine.rootContext()->setContextProperty("step", &step);
     QuickSort quickSort(&array);
     engine.rootContext()->setContextProperty("quickSort", &quickSort);
     MergeSort mergeSort(&array);
