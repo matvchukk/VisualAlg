@@ -25,7 +25,7 @@ QList<int> ListOfSteps::getList(int index){
 }
 
 void ListOfSteps:: backup() {
-    this->steps_.push_back(this->bubblesort->Save());
+    this->steps_.push_back(this->sort->Save());
     }
 
 

@@ -11,6 +11,7 @@ SOURCES += \
         SortingAlg/Sorts/listofsteps.cpp \
         SortingAlg/Sorts/mergeSort.cpp \
         SortingAlg/Sorts/quickSort.cpp \
+        SortingAlg/Sorts/sort.cpp \
         SortingAlg/Sorts/step.cpp \
         main.cpp
 

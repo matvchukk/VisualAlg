@@ -3,11 +3,12 @@
 
 #include "SortingAlg\List\list.h"
 #include <iostream>
-#include "step.h"
+
+#include "sort.h"
 #include <QObject>
 
 ///Class implements sorting by Bubble sort.
-class BubbleSort: public  QObject
+class BubbleSort: public  Sort
 {
 Q_OBJECT
 
@@ -23,10 +24,13 @@ public:
         };
 
 public slots:
+    Step*  Save( );
     void sort();
-    Step  *Save();
-signals:
-   void callQml(QList<int> steplist, int a, int b);
+    void callQmlSlot(){
+        emit callQml();
+    }
+
+
 };
 
 #endif

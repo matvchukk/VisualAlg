@@ -21,7 +21,6 @@ void BubbleSort:: sort(){
     int  complexity=0;
     int length = list->getSize();
     bool swapped = true;
-
     for (int i = 0; i < (length - 1); i++) {
         swapped = false;
         for (int j = 0; j < (length- i- 1); j++) {
@@ -32,15 +31,14 @@ void BubbleSort:: sort(){
             if (!isListSorted( list->items())){
                 this->indexLeft=j;
                 this->indexRight=j+1;
-                emit callQml(list->items(), j, j + 1);
+                callQmlSlot();
              }
 
             if (nextValue < currentValue) {
                  complexity = complexity + 1;
                  list->swapItems(j, j + 1);
-                 emit callQml(list->items(), j, j + 1);
-
-                swapped = true;
+                 callQmlSlot();
+                 swapped = true;
 
         }
     }

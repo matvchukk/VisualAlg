@@ -107,6 +107,7 @@ Rectangle {
             }
         }
 
+
           Connections {
                          target: bubbleSort
                          onCallQml: {
@@ -258,7 +259,11 @@ Rectangle {
         for (var i = 0; i <values.length; i++) {
             listModel.append({ value: values[i] })
         }
+        }
 
-}
-}
+
+
+    }
+
+
 

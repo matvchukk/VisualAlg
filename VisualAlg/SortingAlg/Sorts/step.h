@@ -6,6 +6,7 @@
 class Step: public QObject
 {
      Q_OBJECT
+
 public:
     QList<int> copylist;
     int copyIndexLeft;

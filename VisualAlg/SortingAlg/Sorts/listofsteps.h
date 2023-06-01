@@ -10,10 +10,10 @@ class ListOfSteps : public QObject
     Q_OBJECT
 public:
     explicit ListOfSteps(QObject *parent = nullptr);
-    ListOfSteps(BubbleSort* bubblesort): bubblesort (bubblesort){};
+    ListOfSteps(Sort* sort): sort (sort){};
 private:
     QList<Step *> steps_;
-    BubbleSort* bubblesort;
+    Sort* sort;
 
 public slots:
     int getIndexLeft(int index);
