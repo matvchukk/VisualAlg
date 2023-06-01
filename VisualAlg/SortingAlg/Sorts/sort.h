@@ -19,7 +19,7 @@ public:
 
    virtual void sort()=0;
    virtual Step  *Save()=0;
-    bool isListSorted(const QList<int>& list);
+
 
 signals:
    void callQml();

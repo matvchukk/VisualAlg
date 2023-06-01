@@ -27,6 +27,9 @@ public slots:
     void callQmlSlot(){
         emit callQml();
     }
+    int getComplexity(){
+        return  complexity;
+    }
 
 
 };

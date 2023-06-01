@@ -16,6 +16,7 @@ Rectangle {
      property int second: -1
      property int sorted: 0
      property int type
+     property int complexity: 0
 
     Item {
         anchors.fill: parent
@@ -142,10 +143,15 @@ Rectangle {
                 if (type==1){
                     listofsteps.backup()
                     bubbleSort.sort()
+                    complexity=bubbleSort.getComplexity()
+
                 }
                 if(type==2){
                     listofstepsS.backup()
                     selectionSort.sort()
+                    complexity= selectionSort.getComplexity()
+                    console.log(complexity)
+
                 }
             currentStepIndex++
             updateGridView()
@@ -191,7 +197,7 @@ Rectangle {
                 currentStepIndex++
                 updateGridView()
             }
-
+         enabled: (currentStepIndex-1)/2!=complexity
         }
         Button {
             height: 50
@@ -250,6 +256,7 @@ Rectangle {
 
             }
         }
+        console.log(currentStepIndex)
         for (var i = 0; i <values.length; i++) {
             listModel.append({ value: values[i] })
         }

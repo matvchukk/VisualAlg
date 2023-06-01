@@ -7,7 +7,7 @@ Step* SelectionSort:: Save( ) {
 
 void SelectionSort:: sort(){
     int length = list->getSize();
-
+    int  complexity=0;
     for(int i = 0; i < length ; i++){
 
 
@@ -20,7 +20,7 @@ void SelectionSort:: sort(){
             double currentValue = list->getValueAtIndex(j);
 
 
-            if (!isListSorted( list->items())){
+            if (!(list->isListSorted( ))){
 
                 this->indexLeft=currentMinimumIndex;
                 this->indexRight=j;
@@ -28,13 +28,17 @@ void SelectionSort:: sort(){
              }
 
             if (currentValue < currentMinimum) {
+
                 currentMinimum = currentValue;
                 currentMinimumIndex = j;
             }
         }
-
+         complexity=complexity+1;
          list->swapItems(i, currentMinimumIndex);
+
            callQmlSlot();
 
     }
-}
+    this->complexity=complexity;
+   }
+

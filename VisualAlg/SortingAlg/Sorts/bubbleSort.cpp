@@ -20,7 +20,7 @@ void BubbleSort:: sort(){
             double currentValue = list->getValueAtIndex(j);
             double nextValue = list->getValueAtIndex(j + 1);
 
-            if (!isListSorted( list->items())){
+            if (!(list->isListSorted( ))){
 
                 this->indexLeft=j;
                 this->indexRight=j+1;

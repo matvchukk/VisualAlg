@@ -5,9 +5,7 @@
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
 #include "SortingAlg\Sorts\selectionSort.h"
-
 #include "SortingAlg\Sorts\listofsteps.h"
-
 #include "SortingAlg\Sorts\sort.h"
 
 

@@ -33,6 +33,7 @@ public slots:
     int getValueAtIndex(int index) const;
     void setItems(const QList<int>& newItems);
     void setValueAtIndex(int index,int value );
+    bool isListSorted();
 
 signals:
     void itemsChanged(const QList<int>& items);
