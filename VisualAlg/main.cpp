@@ -4,11 +4,12 @@
 
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
-#include "SortingAlg\Sorts\quickSort.h"
-#include "SortingAlg\Sorts\mergeSort.h"
+#include "SortingAlg\Sorts\selectionSort.h"
+
 #include "SortingAlg\Sorts\listofsteps.h"
-#include "SortingAlg\Sorts\step.h"
+
 #include "SortingAlg\Sorts\sort.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -19,16 +20,20 @@ int main(int argc, char *argv[])
     // For sorting algorithm
     List array;
     engine.rootContext()->setContextProperty("array", &array);
+
     Sort* bubbleSort= new BubbleSort(&array);
     engine.rootContext()->setContextProperty("bubbleSort", bubbleSort);
+
+    Sort* selectionSort= new SelectionSort(&array);
+    engine.rootContext()->setContextProperty("selectionSort", selectionSort);
+
     ListOfSteps listofsteps(bubbleSort);
     engine.rootContext()->setContextProperty("listofsteps", &listofsteps);
-    Step step;
-    engine.rootContext()->setContextProperty("step", &step);
-    QuickSort quickSort(&array);
-    engine.rootContext()->setContextProperty("quickSort", &quickSort);
-    MergeSort mergeSort(&array);
-    engine.rootContext()->setContextProperty("mergeSort", &mergeSort);
+
+    ListOfSteps listofstepsS(selectionSort);
+    engine.rootContext()->setContextProperty("listofstepsS", &listofstepsS);
+
+
    //
 
 

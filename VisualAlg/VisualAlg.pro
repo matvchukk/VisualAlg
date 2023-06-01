@@ -11,6 +11,7 @@ SOURCES += \
         SortingAlg/Sorts/listofsteps.cpp \
         SortingAlg/Sorts/mergeSort.cpp \
         SortingAlg/Sorts/quickSort.cpp \
+        SortingAlg/Sorts/selectionSort.cpp \
         SortingAlg/Sorts/sort.cpp \
         SortingAlg/Sorts/step.cpp \
         main.cpp
@@ -35,5 +36,6 @@ HEADERS += \
     SortingAlg/Sorts/listofsteps.h \
     SortingAlg/Sorts/mergeSort.h \
     SortingAlg/Sorts/quickSort.h \
+    SortingAlg/Sorts/selectionSort.h \
     SortingAlg/Sorts/sort.h \
     SortingAlg/Sorts/step.h

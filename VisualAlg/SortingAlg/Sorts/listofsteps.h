@@ -21,6 +21,8 @@ public slots:
     QList<int> getList(int index);
     Step* getSteps(int index) ;
     void backup() ;
+    void clearSteps();
+
 
 };
 

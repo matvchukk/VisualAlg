@@ -28,6 +28,12 @@ void ListOfSteps:: backup() {
     this->steps_.push_back(this->sort->Save());
     }
 
+void ListOfSteps::clearSteps()
+{
+    qDeleteAll(steps_);
+    steps_.clear();
+}
+
 
 
 
