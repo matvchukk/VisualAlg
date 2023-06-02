@@ -118,5 +118,13 @@ TEST_CASE("Selection Sort Test") {
 
         CHECK(list.isListSorted());
     }
+    SUBCASE("Unsorted List") {
+        List list;
+        list.addItem(38);
+        Sort* selectionSort= new  SelectionSort(&list);
+       selectionSort->sort();
+
+        CHECK(list.isListSorted());
+    }
 
 }
