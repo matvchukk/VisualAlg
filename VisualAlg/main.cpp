@@ -4,6 +4,11 @@
 
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
+#include "SortingAlg\Sorts\selectionSort.h"
+#include "SortingAlg\Sorts\quickSort.h"
+#include "SortingAlg\Sorts\listofsteps.h"
+#include "SortingAlg\Sorts\sort.h"
+#include "PatternsSearching\RabinKarp.h "
 
 int main(int argc, char *argv[])
 {
@@ -21,12 +26,19 @@ int main(int argc, char *argv[])
     Sort* selectionSort= new SelectionSort(&array);
     engine.rootContext()->setContextProperty("selectionSort", selectionSort);
 
-    ListOfSteps listofsteps(bubbleSort);
-    engine.rootContext()->setContextProperty("listofsteps", &listofsteps);
+    Sort* quickSort= new QuickSort(&array);
+    engine.rootContext()->setContextProperty("quickSort", quickSort);
+
+    ListOfSteps listofstepsB(bubbleSort);
+    engine.rootContext()->setContextProperty("listofstepsB", &listofstepsB);
 
     ListOfSteps listofstepsS(selectionSort);
     engine.rootContext()->setContextProperty("listofstepsS", &listofstepsS);
 
+    ListOfSteps listofstepsQ(quickSort);
+    engine.rootContext()->setContextProperty("listofstepsQ", &listofstepsQ);
+
+   //
 
    //
     RabinKarp rabinKarp;
@@ -44,5 +56,6 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
+
 
 

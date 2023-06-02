@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include "step.h"
-#include "SortingAlg\Sorts\bubblesort.h"
+#include "SortingAlg\Sorts\sort.h"
 
 class ListOfSteps : public QObject
 {
@@ -22,8 +22,7 @@ public slots:
     Step* getSteps(int index) ;
     void backup() ;
     void clearSteps();
-
-
+    int getSize();
 };
 
 #endif // LISTOFSTEPS_H

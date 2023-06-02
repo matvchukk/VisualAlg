@@ -107,31 +107,20 @@ Rectangle {
                     inputValue.text = ""
                     sorted=0
                     currentStepIndex=0
-                    listofsteps.clearSteps()
-                     listofstepsS.clearSteps()
+                    getListOfSteps(type).clearSteps()
 
                 }
             }
         }
 
           Connections {
-                         target:  bubbleSort
+                         target: getSortType(type)
                          onCallQml: {
                                 sorted=1
-                                listofsteps.backup();
+                                getListOfSteps(type).backup();
                                 currentStepIndex++
                                     }
                                 }
-
-          Connections {
-                         target:  selectionSort
-                         onCallQml: {
-                                sorted=1
-                                listofstepsS.backup();
-                                currentStepIndex++
-                                    }
-                                }
-
         Button {
             height: 50
             width: rightItem.width * 0.7
@@ -140,19 +129,10 @@ Rectangle {
             currentStepIndex = 0
             arrayIntoQlist(values.slice())
 
-                if (type==1){
-                    listofsteps.backup()
-                    bubbleSort.sort()
-                    complexity=bubbleSort.getComplexity()
+                    getListOfSteps(type).backup()
+                    getSortType(type).sort()
+                   //complexity=getSortType(type).getComplexity()
 
-                }
-                if(type==2){
-                    listofstepsS.backup()
-                    selectionSort.sort()
-                    complexity= selectionSort.getComplexity()
-                    console.log(complexity)
-
-                }
             currentStepIndex++
             updateGridView()
             first=-1
@@ -179,25 +159,16 @@ Rectangle {
             width: rightItem.width * 0.7
             text: "Forward"
             onClicked: {
-
                 if (sorted===0){
-
                     currentStepIndex = 0
                     arrayIntoQlist(values.slice())
-                    if (type==1){
-                         listofsteps.backup()
-                        bubbleSort.sort()
-                    currentStepIndex = 0}
-
-                    if(type==2){
-                         listofstepsS.backup()
-                        selectionSort.sort()
-                       currentStepIndex = 0}}
-
-                currentStepIndex++
-                updateGridView()
+                    getListOfSteps(type).backup()
+                    getSortType(type).sort()
+                    currentStepIndex = 1}
+                    currentStepIndex++
+                    updateGridView()
             }
-         enabled: (currentStepIndex-1)/2!=complexity
+         enabled: currentStepIndex!==getListOfSteps(type).getSize()
         }
         Button {
             height: 50
@@ -209,6 +180,7 @@ Rectangle {
                 second=-1
                 updateGridView()
                 sorted=0
+                getListOfSteps(type).clearSteps()
             }
 
         }
@@ -224,13 +196,23 @@ Rectangle {
                 secondSortWindow.hideMeCliked()}
         }
    }
+    function getListOfSteps(type){
+        if (type===1) return listofstepsB
+        else if (type===2) return listofstepsS
+        else if (type===3) return listofstepsQ
+        }
+    function getSortType(type){
+        if (type===1) return bubbleSort
+        else if (type===2) return selectionSort
+        else if (type===3) return quickSort
+        }
 
      function arrayIntoQlist(list){
         array.clearItems()
         for (var i=0;i<list.length;i++){
               array.addItem(list[i] )
              }
-        }
+     }
 
     function addValue(number) {
         values.push(number)
@@ -240,30 +222,16 @@ Rectangle {
     function updateGridView() {
         listModel.clear()
         values=[]
-        if (type==1){
-            first=listofsteps.getIndexLeft(currentStepIndex-1)
-            second=listofsteps.getIndexRight(currentStepIndex-1)
-            for (var i = 0; i < listofsteps.getList(currentStepIndex-1).length; i++) {
-               values.push(listofsteps.getList(currentStepIndex-1)[i]);
-            }
-        }
-        else if (type===2){
-
-            first=listofstepsS.getIndexLeft(currentStepIndex-1)
-            second=listofstepsS.getIndexRight(currentStepIndex-1)
-            for (var i = 0; i < listofstepsS.getList(currentStepIndex-1).length; i++) {
-            values.push(listofstepsS.getList(currentStepIndex-1)[i]);
-
-            }
-        }
-        console.log(currentStepIndex)
+        first= getListOfSteps(type).getIndexLeft(currentStepIndex-1)
+        second= getListOfSteps(type).getIndexRight(currentStepIndex-1)
+        for (var i = 0; i <  getListOfSteps(type).getList(currentStepIndex-1).length; i++) {
+            values.push( getListOfSteps(type).getList(currentStepIndex-1)[i]);}
+console.log(currentStepIndex)
         for (var i = 0; i <values.length; i++) {
-            listModel.append({ value: values[i] })
+            listModel.append({ value: values[i] })}
         }
-        }
 
 
-
-    }
+}
 
 

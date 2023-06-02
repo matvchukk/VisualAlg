@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <iostream>
-#include "SortingAlg\List\list.h"
 #include "step.h"
 
 class Sort: public QObject
@@ -19,7 +18,6 @@ public:
 
    virtual void sort()=0;
    virtual Step  *Save()=0;
-
 
 signals:
    void callQml();

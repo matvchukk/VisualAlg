@@ -87,13 +87,13 @@ Rectangle {
                 }
                 Button{
                     id: button3
-                    text: "Sort"
+                    text: "Quick Sort"
                     width: 200
                     height: 60
                     font.pixelSize: 20
 
                     onClicked: {
-                       // createSecondWindow("BubbleSortWindow.qml")
+                        createSecondWindow("SecondWindowSort.qml", 3)
                     }
                 }
 

@@ -2,17 +2,20 @@
 #define QUICKSORT_H
 
 #include "SortingAlg\List\list.h"
+#include <iostream>
+#include "sort.h"
 #include <QObject>
-#include <QTimer>
 
-class QuickSort : public QObject
+class QuickSort : public Sort
 {
     Q_OBJECT
 private:
     List *list;
+    int indexRight;
+    int indexLeft;
+    int  complexity;
 
 public:
-
     QuickSort( List *list):
         list(list)
         {
@@ -21,10 +24,10 @@ public:
     int partition(int left, int right);
 
 public slots:
+    int getComplexity();
+    Step*  Save( );
     void sort();
-
-signals:
-    void callQml(QList<int> steplist);
+    void callQmlSlot();
 
 };
 

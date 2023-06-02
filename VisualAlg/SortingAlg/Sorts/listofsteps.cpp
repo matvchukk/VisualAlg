@@ -34,6 +34,11 @@ void ListOfSteps::clearSteps()
     steps_.clear();
 }
 
+int ListOfSteps::getSize()
+{
+    return steps_.size();
+}
+
 
 
 

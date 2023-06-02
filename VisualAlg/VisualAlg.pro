@@ -9,7 +9,6 @@ SOURCES += \
         SortingAlg/List/list.cpp \
         SortingAlg/Sorts/bubbleSort.cpp \
         SortingAlg/Sorts/listofsteps.cpp \
-        SortingAlg/Sorts/mergeSort.cpp \
         SortingAlg/Sorts/quickSort.cpp \
         SortingAlg/Sorts/selectionSort.cpp \
         SortingAlg/Sorts/sort.cpp \
@@ -30,11 +29,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    PatternsSearching/RabinKarp.h \
     SortingAlg/List/list.h \
     SortingAlg/List/list.h \
     SortingAlg/Sorts/bubbleSort.h \
     SortingAlg/Sorts/listofsteps.h \
-    SortingAlg/Sorts/mergeSort.h \
     SortingAlg/Sorts/quickSort.h \
     SortingAlg/Sorts/selectionSort.h \
     SortingAlg/Sorts/sort.h \

@@ -2,12 +2,17 @@
 #include <QTimer>
 #include <QThread>
 
+int BubbleSort:: getComplexity(){
+    return  complexity;
+}
 
+void BubbleSort:: callQmlSlot(){
+    emit callQml();
+}
 
 Step* BubbleSort:: Save( ) {
     return new Step(this->list->items(),this->indexLeft, this->indexRight);
   }
-
 
 void BubbleSort:: sort(){
 
@@ -21,7 +26,6 @@ void BubbleSort:: sort(){
             double nextValue = list->getValueAtIndex(j + 1);
 
             if (!(list->isListSorted( ))){
-
                 this->indexLeft=j;
                 this->indexRight=j+1;
                 callQmlSlot();
@@ -31,8 +35,6 @@ void BubbleSort:: sort(){
                  complexity = complexity + 1;
                  list->swapItems(j, j + 1);
                  callQmlSlot();
-
-
         }
     }
 }

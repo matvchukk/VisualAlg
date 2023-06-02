@@ -1,5 +1,12 @@
 #include "selectionSort.h"
 
+void SelectionSort::callQmlSlot(){
+    emit callQml();
+}
+
+int SelectionSort::getComplexity(){
+    return  complexity;
+}
 
 Step* SelectionSort:: Save( ) {
     return new Step(this->list->items(),this->indexLeft, this->indexRight);

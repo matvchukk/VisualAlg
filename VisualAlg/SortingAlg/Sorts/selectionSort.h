@@ -3,7 +3,6 @@
 
 #include "SortingAlg\List\list.h"
 #include <iostream>
-
 #include "sort.h"
 #include <QObject>
 
@@ -11,10 +10,11 @@ class SelectionSort : public Sort
 {
     Q_OBJECT
 private:
-    List *list;
+     List *list;
      int indexRight;
      int indexLeft;
      int  complexity;
+
 public:
     SelectionSort( List *list):
         list(list)
@@ -24,14 +24,8 @@ public:
 public slots:
     Step*  Save( );
     void sort();
-    void callQmlSlot(){
-        emit callQml();
-    }
-    int getComplexity(){
-        return  complexity;
-    }
-
-
+    void callQmlSlot();
+    int getComplexity();
 };
 
 #endif // SELECTIONSORT_H

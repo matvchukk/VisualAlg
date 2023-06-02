@@ -3,7 +3,6 @@
 
 #include "SortingAlg\List\list.h"
 #include <iostream>
-
 #include "sort.h"
 #include <QObject>
 
@@ -13,10 +12,11 @@ class BubbleSort: public  Sort
 Q_OBJECT
 
 private:
-    List *list;
+     List *list;
      int indexRight;
      int indexLeft;
      int  complexity;
+
 public:
     BubbleSort( List *list):
         list(list)
@@ -24,15 +24,10 @@ public:
         };
 
 public slots:
-    int getComplexity(){
-        return  complexity;
-    }
+    int getComplexity();
     Step*  Save( );
     void sort();
-    void callQmlSlot(){
-        emit callQml();
-    }
-
+    void callQmlSlot();
 
 };
 
