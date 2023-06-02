@@ -18,7 +18,7 @@ public:
 
    virtual void sort()=0;
    virtual Step  *Save()=0;
-
+void  callQmlSlot();
 signals:
    void callQml();
 

@@ -4,9 +4,6 @@ int QuickSort:: getComplexity(){
     return  complexity;
 }
 
-void QuickSort::callQmlSlot(){
-    emit callQml();
-}
 
 Step*QuickSort:: Save( ) {
     return new Step(this->list->items(),this->indexLeft, this->indexRight);

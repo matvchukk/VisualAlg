@@ -6,9 +6,7 @@ int BubbleSort:: getComplexity(){
     return  complexity;
 }
 
-void BubbleSort:: callQmlSlot(){
-    emit callQml();
-}
+
 
 Step* BubbleSort:: Save( ) {
     return new Step(this->list->items(),this->indexLeft, this->indexRight);

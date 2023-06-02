@@ -27,7 +27,7 @@ public slots:
     int getComplexity();
     Step*  Save( );
     void sort();
-    void callQmlSlot();
+
 
 };
 

@@ -1,9 +1,5 @@
 #include "selectionSort.h"
 
-void SelectionSort::callQmlSlot(){
-    emit callQml();
-}
-
 int SelectionSort::getComplexity(){
     return  complexity;
 }

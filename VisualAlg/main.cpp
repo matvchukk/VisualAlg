@@ -2,19 +2,30 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include "Tests\doctest.h"
+
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
 #include "SortingAlg\Sorts\selectionSort.h"
 #include "SortingAlg\Sorts\quickSort.h"
 #include "SortingAlg\Sorts\listofsteps.h"
 #include "SortingAlg\Sorts\sort.h"
+
+
 #include "PatternsSearching\RabinKarp.h "
 
+
+//namespace lab {
+//int doctestRun(int argc, char *argv[]){
+  //  doctest::Context context(argc, argv);
+    //    int result = context.run();
+      //  return result;//
+//}
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-
+    //doctestRun(argc, argv);
 
     // For sorting algorithm
     List array;
@@ -38,7 +49,7 @@ int main(int argc, char *argv[])
     ListOfSteps listofstepsQ(quickSort);
     engine.rootContext()->setContextProperty("listofstepsQ", &listofstepsQ);
 
-   //
+    //
 
    //
     RabinKarp rabinKarp;
@@ -57,5 +68,4 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 
-
-
+//}

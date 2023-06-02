@@ -13,6 +13,7 @@ SOURCES += \
         SortingAlg/Sorts/selectionSort.cpp \
         SortingAlg/Sorts/sort.cpp \
         SortingAlg/Sorts/step.cpp \
+        Tests/TestSorting/sortingTests.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -37,4 +38,5 @@ HEADERS += \
     SortingAlg/Sorts/quickSort.h \
     SortingAlg/Sorts/selectionSort.h \
     SortingAlg/Sorts/sort.h \
-    SortingAlg/Sorts/step.h
+    SortingAlg/Sorts/step.h \
+    Tests/doctest.h

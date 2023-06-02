@@ -27,8 +27,6 @@ Rectangle {
          secondWindow.destroy()
          secondWindow=null}
     }
-
-
     Item {
         anchors.fill: parent
 
@@ -49,60 +47,102 @@ Rectangle {
                 color: "white"
             }
         }
+        Column{
+            id: loColumn
+            anchors.centerIn: parent
+            spacing: parent.width/10
 
-        Item {
-            id: rightItem
-            width:  parent.width
-            height: parent.height
-            anchors.right: parent.right
+                Row{
 
-           Row {
-                anchors.top: parent.top
-                anchors.topMargin:parent.height/2-50
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 20
+                    Rectangle {
+                         width: 10
+                         height: button1.height
+                         color:  "#721F1F"
+                         }
 
+                     Button {
+                        id: button1
+                        text: "Bubble Sort"
+                        background: Rectangle {
+                                     color: "white"
+                                     }
+                       contentItem: Text {
+                       text: button1.text
+                       color: "#721F1F"
+                       font.pixelSize: 32
+                       font.bold: true
+                       anchors.horizontalCenter: parent.horizontalCenter
+                       anchors.verticalCenter: parent.verticalCenter
+                   }
+                        onClicked: {
+                            createSecondWindow("SecondWindowSort.qml", 1)
+                         }
+                      }
+                 }
+                Row{
+                      Rectangle {
+                         width: 10
+                         height: button2.height
+                         color:  "#721F1F"
+                     }
+                     Button {
+                        id: button2
+                        background: Rectangle {
+                              color: "white"
+                         }
+                        contentItem: Text {
+                       text: "Selection Sort"
+                       color: "#721F1F"
+                       font.pixelSize: 32
+                       font.bold: true
+                       anchors.horizontalCenter: button2.horizontalCenter
+                       anchors.verticalCenter: parent.verticalCenter
+                       wrapMode: Text.WordWrap
+                   }
+                        onClicked: {
+                           createSecondWindow("SecondWindowSort.qml", 2)
+                         }
+                      }
+             }
+             Row{
+                     Rectangle {
+                         width: 10
+                        height: button3.height
+                        color:  "#721F1F"
+                     }
 
-                Button{
-                    id: button1
-                    text: "Bubble Sort"
-                    width: 200
-                    height: 60
-                    font.pixelSize: 20
+                     Button {
+                        id: button3
+                        background: Rectangle {
+                        color: "white"
+                            }
+                       text: "Quick Sort"
+                       contentItem: Text {
+                       text: button3.text
+                       color: "#721F1F"
+                       font.pixelSize: 32
+                       font.bold: true
+                       anchors.horizontalCenter: button3.horizontalCenter
+                       anchors.verticalCenter: button3.verticalCenter
+                        }
+                       onClicked: {
+                      createSecondWindow("SecondWindowSort.qml", 3)
+                   }
+               }
+    }
+    }
+}
 
-                    onClicked: {
-                        createSecondWindow("SecondWindowSort.qml", 1)
-                    }
-                }
-                Button{
-                    id: button2
-                    text: "Selection Sort"
-                    width: 200
-                    height: 60
-                    font.pixelSize: 20
-
-                    onClicked: {
-                        createSecondWindow("SecondWindowSort.qml", 2)
-                    }
-                }
-                Button{
-                    id: button3
-                    text: "Quick Sort"
-                    width: 200
-                    height: 60
-                    font.pixelSize: 20
-
-                    onClicked: {
-                        createSecondWindow("SecondWindowSort.qml", 3)
-                    }
-                }
-
-         }
-        }
         Button {
             id: back
             anchors.bottom: parent.bottom
+            background: Rectangle {
+                color: "white"
+                 }
+            contentItem: Text {
             text: "Menu"
+            font.pixelSize:26
+            color: "#721F1F"}
             onClicked: secondDialog.hideMeCliked()
         }
    }
@@ -111,7 +151,7 @@ Rectangle {
 
 
 
-    }
+
 
 
 

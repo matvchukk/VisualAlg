@@ -6,10 +6,9 @@ import QtQuick.Layouts 1.12
 
 Window {
     id: root
-    width: 1240
-    height: 960
+    width: Screen.desktopAvailableWidth
+  height: Screen.desktopAvailableHeight
     visible: true
-
 
     property var secondWindow: null
 
@@ -31,53 +30,111 @@ Window {
 
     Rectangle{
         id:mainwindow
-        color: "#8EA4D2"
+
         anchors.fill: parent
     }
 
-    Text{
-        text:"Choose the algorithm"
+    Rectangle {
+        id: topRect
+        height: 100
+        width: parent.width
+        color: "#721F1F"
+        anchors.top: parent.top
 
-        anchors.verticalCenter: parent.top
-        anchors.horizontalCenter: parent.right
-        anchors.verticalCenterOffset: parent.height/10
-        anchors.horizontalCenterOffset: -parent.width/2
+        Text {
+            text: "Choose the algorithm"
+            font.bold: true
+            font.pixelSize: 32
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 35
+            color: "white"
+        }
     }
-    ColumnLayout{
+
+    Column{
         id: loColumn
         anchors.centerIn: parent
         spacing: parent.width/10
 
+            Row{
 
-        //the first algorithm
-        Button{
-            id: button1
-            text: "Sort"
-            onClicked: {
-                createSecondWindow("../Windows/WindowSort.qml")
-            }
-        }
+                Rectangle {
+                     width: 10
+                     height: button1.height
+                     color:  "#721F1F"
+                     }
 
-        //the second algorithm
-        Button{
-            id: button2
-            text: "Pattern Searching"
-            onClicked: {
-                createSecondWindow("../Windows/WindowPatternSearching.qml")
-            }
-        }
+                 Button {
+                    id: button1
+                    text: "Sorting"
+                    background: Rectangle {
+                                 color: "white"
+                                 }
+                   contentItem: Text {
+                   text: button1.text
+                   color: "#721F1F"
+                   font.pixelSize: 40
+                   font.bold: true
+                   anchors.horizontalCenter: parent.horizontalCenter
+                   anchors.verticalCenter: parent.verticalCenter
+               }
+                    onClicked: {
+                        createSecondWindow("../Windows/WindowSort.qml")
+                     }
+                  }
+             }
+            Row{
+                  Rectangle {
+                     width: 10
+                     height: button2.height
+                     color:  "#721F1F"
+                 }
 
-         //the third algorithm
-        Button{
-            id: button3
-            text: "Alg3"
-            onClicked: {
-                createSecondWindow("../Windows/Window3.qml")
-            }
-        }
+                 Button {
+                    id: button2
+                    background: Rectangle {
+                          color: "white"
+                     }
+                    contentItem: Text {
+                   text: "Pattern Searching"
+                   color: "#721F1F"
+                   font.pixelSize: 40
+                   font.bold: true
+                   anchors.horizontalCenter: button2.horizontalCenter
+                   anchors.verticalCenter: parent.verticalCenter
+                   wrapMode: Text.WordWrap
+               }
+                    onClicked: {
+                        createSecondWindow("../Windows/WindowPatternSearching.qml")
+                     }
+                  }
+         }
+         Row{
+                 Rectangle {
+                     width: 10
+                    height: button3.height
+                    color:  "#721F1F"
+                 }
 
-
-    }
-
-
+                 Button {
+                    id: button3
+                    background: Rectangle {
+                    color: "white"
+                        }
+                   text: "Alg3"
+                   contentItem: Text {
+                   text: button3.text
+                   color: "#721F1F"
+                   font.pixelSize: 40
+                   font.bold: true
+                   anchors.horizontalCenter: button3.horizontalCenter
+                   anchors.verticalCenter: button3.verticalCenter
+                    }
+                   onClicked: {
+                   createSecondWindow("../Windows/Window3.qml")
+               }
+           }
+}
+}
 }
