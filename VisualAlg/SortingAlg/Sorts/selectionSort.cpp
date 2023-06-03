@@ -3,6 +3,9 @@
 int SelectionSort::getComplexity(){
     return  complexity;
 }
+void SelectionSort:: callQmlSlot(){
+    emit callQml();
+}
 
 Step* SelectionSort:: Save( ) {
     return new Step(this->list->items(),this->indexLeft, this->indexRight);

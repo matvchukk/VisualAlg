@@ -29,6 +29,7 @@ public slots:
     void sort();
 
 
+void  callQmlSlot();
 };
 
 #endif

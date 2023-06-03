@@ -10,7 +10,7 @@
 #include "SortingAlg\Sorts\quickSort.h"
 #include "SortingAlg\Sorts\listofsteps.h"
 #include "SortingAlg\Sorts\sort.h"
-
+#include "SortingAlg\Sorts\timingsortdecorator.h"
 
 #include "PatternsSearching\RabinKarp.h "
 
@@ -31,22 +31,33 @@ int main(int argc, char *argv[])
     List array;
     engine.rootContext()->setContextProperty("array", &array);
 
+
+
+
+   // timingBubbleSort->sort(); // Виклик сортування з вимірюванням часу
+
     Sort* bubbleSort= new BubbleSort(&array);
+    Sort* timingBubbleSort = new TimingSortDecorator(bubbleSort);
     engine.rootContext()->setContextProperty("bubbleSort", bubbleSort);
+    engine.rootContext()->setContextProperty("timingBubbleSort", timingBubbleSort);
 
     Sort* selectionSort= new SelectionSort(&array);
     engine.rootContext()->setContextProperty("selectionSort", selectionSort);
+    Sort* timingSelectionSort = new TimingSortDecorator(selectionSort);
+    engine.rootContext()->setContextProperty("timingSelectionSort", timingSelectionSort);
 
     Sort* quickSort= new QuickSort(&array);
     engine.rootContext()->setContextProperty("quickSort", quickSort);
+    Sort* timingQuickSort = new TimingSortDecorator(quickSort);
+    engine.rootContext()->setContextProperty("timingQuickSort", timingQuickSort);
 
-    ListOfSteps listofstepsB(bubbleSort);
+    ListOfSteps listofstepsB(timingBubbleSort);
     engine.rootContext()->setContextProperty("listofstepsB", &listofstepsB);
 
-    ListOfSteps listofstepsS(selectionSort);
+    ListOfSteps listofstepsS(timingSelectionSort);
     engine.rootContext()->setContextProperty("listofstepsS", &listofstepsS);
 
-    ListOfSteps listofstepsQ(quickSort);
+    ListOfSteps listofstepsQ(timingQuickSort);
     engine.rootContext()->setContextProperty("listofstepsQ", &listofstepsQ);
 
     //

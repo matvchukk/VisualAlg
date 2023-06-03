@@ -13,6 +13,9 @@ void QuickSort::sort(){
     int right = list->getSize() - 1;
     quicksortlist(0, right);
 }
+void QuickSort:: callQmlSlot(){
+    emit callQml();
+}
 
 int QuickSort::partition(int left, int right){
 

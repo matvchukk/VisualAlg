@@ -12,7 +12,9 @@ SOURCES += \
         SortingAlg/Sorts/quickSort.cpp \
         SortingAlg/Sorts/selectionSort.cpp \
         SortingAlg/Sorts/sort.cpp \
+        SortingAlg/Sorts/sortdecorator.cpp \
         SortingAlg/Sorts/step.cpp \
+        SortingAlg/Sorts/timingsortdecorator.cpp \
         Tests/TestSorting/sortingTests.cpp \
         main.cpp
 
@@ -38,5 +40,7 @@ HEADERS += \
     SortingAlg/Sorts/quickSort.h \
     SortingAlg/Sorts/selectionSort.h \
     SortingAlg/Sorts/sort.h \
+    SortingAlg/Sorts/sortdecorator.h \
     SortingAlg/Sorts/step.h \
+    SortingAlg/Sorts/timingsortdecorator.h \
     Tests/doctest.h

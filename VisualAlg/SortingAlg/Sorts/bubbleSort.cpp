@@ -6,6 +6,9 @@ int BubbleSort:: getComplexity(){
     return  complexity;
 }
 
+void BubbleSort:: callQmlSlot(){
+    emit callQml();
+}
 
 
 Step* BubbleSort:: Save( ) {
@@ -36,6 +39,7 @@ void BubbleSort:: sort(){
         }
     }
 }
+
  this->complexity=complexity;
 }
 

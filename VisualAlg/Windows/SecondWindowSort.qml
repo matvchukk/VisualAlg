@@ -182,7 +182,7 @@ Rectangle {
                 spacing: 20
 
           Connections {
-                         target: getSortType(type)
+                         target: getSort(type)
                          onCallQml: {
                                 sorted=1
                                 getListOfSteps(type).backup();
@@ -207,6 +207,7 @@ Rectangle {
                     arrayIntoQlist(values.slice())
                     getListOfSteps(type).backup()
                     getSortType(type).sort()
+                    //console.log(getSortType(type).time)
                    //complexity=getSortType(type).getComplexity()
 
                     currentStepIndex++
@@ -345,6 +346,11 @@ Rectangle {
         }
 
     function getSortType(type){
+        if (type===1) return timingBubbleSort
+        else if (type===2) return timingSelectionSort
+        else if (type===3) return timingQuickSort
+        }
+    function getSort(type){
         if (type===1) return bubbleSort
         else if (type===2) return selectionSort
         else if (type===3) return quickSort
@@ -378,7 +384,6 @@ Rectangle {
             values.push( getListOfSteps(type).getList(currentStepIndex-1)[i]);}
         for (var i = 0; i <values.length; i++) {
             listModel.append({ value: values[i] })}
-        }
 }
 
-
+}
