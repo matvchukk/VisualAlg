@@ -17,6 +17,7 @@ Rectangle {
      property int sorted: 0
      property int type
      property int complexity: 0
+     property int time: 0
 
     Item {
         anchors.fill: parent
@@ -189,6 +190,17 @@ Rectangle {
                                 currentStepIndex++
                                     }
                                 }
+          Connections {
+                         target: getSortType(type)
+                         onElapsedTimeChanged: {
+                            // complexity=  getSortType(type).elapsedTime()
+                              console.log("EEEEEEEEEEEEEEEE")
+                           time=elapsedTime
+                             eltime.visible=true
+                                    }
+                                }
+
+
         Button {
             height: 50
             width: rightItem.width * 0.7
@@ -294,6 +306,18 @@ Rectangle {
             }
               enabled: sorted===1
 
+        }
+        Text {
+            id: eltime
+            text:"Elapsed time: " +time+ " ms"
+            font.bold: true
+            font.pixelSize: 18
+           anchors.bottom: rightItem.bottom
+            anchors.left: parent.left
+            anchors.leftMargin: 35
+            anchors.topMargin: 100
+            color:  "#3B5249"
+            visible: false
         }
 
         }
