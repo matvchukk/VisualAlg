@@ -198,7 +198,7 @@ Rectangle {
                          target: getSortType(type)
                          onElapsedTimeChanged: {
                              time=elapsedTime
-                               eltime.visible=true
+
                                     }
                                 }
         Button {
@@ -220,7 +220,7 @@ Rectangle {
                     arrayIntoQlist(values.slice())
                     getListOfSteps(type).backup()
                     getSortType(type).sort()
-
+                    eltime.visible=true
                     getSort(type).accept(complexity)
                     complex=complexity.getComplexity()
                     complexit.visible=true
@@ -300,6 +300,10 @@ Rectangle {
              font.bold: true
             font.pixelSize: 26}
             onClicked: {
+                eltime.visible=false
+                 empty.visible=false
+                complexit.visible=false
+                positive.visible=false
                 currentStepIndex=1
                 first=-1
                 second=-1

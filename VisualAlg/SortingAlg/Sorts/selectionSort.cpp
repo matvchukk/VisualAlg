@@ -29,15 +29,12 @@ void SelectionSort:: sort(){
 
     for(int i = 0; i < length ; i++){
 
-
-        double currentMinimum = list->getValueAtIndex(i);
+        int currentMinimum = list->getValueAtIndex(i);
         int currentMinimumIndex = i;
-
 
         for(int j = i+1; j < length; j++){
 
-            double currentValue = list->getValueAtIndex(j);
-
+            int currentValue = list->getValueAtIndex(j);
 
             if (!(list->isListSorted( ))){
 
@@ -57,9 +54,6 @@ void SelectionSort:: sort(){
          this->increaseCounter();
 
            callQmlSlot();
-
     }
-
-
    }
 

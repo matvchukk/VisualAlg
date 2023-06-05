@@ -10,7 +10,6 @@ SOURCES += \
         SortingAlg/Sorts/bubbleSort.cpp \
         SortingAlg/Sorts/complexityvisitor.cpp \
         SortingAlg/Sorts/listofsteps.cpp \
-        SortingAlg/Sorts/memoryvisitor.cpp \
         SortingAlg/Sorts/quickSort.cpp \
         SortingAlg/Sorts/selectionSort.cpp \
         SortingAlg/Sorts/sort.cpp \
@@ -41,7 +40,6 @@ HEADERS += \
     SortingAlg/Sorts/bubbleSort.h \
     SortingAlg/Sorts/complexityvisitor.h \
     SortingAlg/Sorts/listofsteps.h \
-    SortingAlg/Sorts/memoryvisitor.h \
     SortingAlg/Sorts/quickSort.h \
     SortingAlg/Sorts/selectionSort.h \
     SortingAlg/Sorts/sort.h \
