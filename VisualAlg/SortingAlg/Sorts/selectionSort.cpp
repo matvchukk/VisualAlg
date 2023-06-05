@@ -1,8 +1,21 @@
 #include "selectionSort.h"
 
-int SelectionSort::getComplexity(){
-    return  complexity;
+void SelectionSort::accept(SortVisitor* visitor) {
+        visitor->visitSelectionSort(this);
+    }
+
+int SelectionSort::getLength(){
+   return list->getSize();
 }
+
+int SelectionSort:: getCounter(){
+    return counter;
+}
+
+void SelectionSort:: increaseCounter(){
+     this->counter+=1;
+}
+
 void SelectionSort:: callQmlSlot(){
     emit callQml();
 }
@@ -13,7 +26,7 @@ Step* SelectionSort:: Save( ) {
 
 void SelectionSort:: sort(){
     int length = list->getSize();
-    int  complexity=0;
+
     for(int i = 0; i < length ; i++){
 
 
@@ -39,12 +52,14 @@ void SelectionSort:: sort(){
                 currentMinimumIndex = j;
             }
         }
-         complexity=complexity+1;
+
          list->swapItems(i, currentMinimumIndex);
+         this->increaseCounter();
 
            callQmlSlot();
 
     }
-    this->complexity=complexity;
+
+
    }
 

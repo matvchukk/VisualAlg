@@ -2,9 +2,20 @@
 #include <QTimer>
 #include <QThread>
 
-int BubbleSort:: getComplexity(){
-    return  complexity;
+int BubbleSort:: getLength(){
+    return list->getSize();
 }
+int BubbleSort:: getCounter(){
+    return counter;
+}
+void BubbleSort:: increaseCounter(){
+     this->counter+=1;
+}
+
+
+void BubbleSort::accept(SortVisitor* visitor)  {
+        visitor->visitBubbleSort(this);
+    }
 
 void BubbleSort:: callQmlSlot(){
     emit callQml();
@@ -17,7 +28,6 @@ Step* BubbleSort:: Save( ) {
 
 void BubbleSort:: sort(){
 
-    int  complexity=0;
     int length = list->getSize();
 
     for (int i = 0; i < (length - 1); i++) {
@@ -33,14 +43,15 @@ void BubbleSort:: sort(){
              }
 
             if (nextValue < currentValue) {
-                 complexity = complexity + 1;
+
                  list->swapItems(j, j + 1);
                  callQmlSlot();
+                  this->increaseCounter();
         }
     }
-}
 
- this->complexity=complexity;
+
+}
 }
 
 

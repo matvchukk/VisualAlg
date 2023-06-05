@@ -16,7 +16,7 @@ Rectangle {
      property int second: -1
      property int sorted: 0
      property int type
-     property int complexity: 0
+     property int complex: 0
      property int time: 0
 
     Item {
@@ -65,9 +65,9 @@ Rectangle {
 
                             background: Rectangle {
                                 color: "transparent"
-                                border.color: "#3B5249"  // Колір контуру
-                                border.width: 2  // Товщина контуру
-                                radius: 5  // Радіус кутиків
+                                border.color: "#3B5249"
+                                border.width: 2
+                                radius: 5
                             }
 
                      }
@@ -88,7 +88,9 @@ Rectangle {
             onClicked: {
                 var inputNumber = parseInt(inputValue.text)
                 if (inputNumber>0) {
+                    eltime.visible=false
                      empty.visible=false
+                    complexit.visible=false
                     positive.visible=false
                     addValue(inputNumber)
                     inputValue.text = ""
@@ -115,6 +117,10 @@ Rectangle {
              font.bold: true
             font.pixelSize: 22}
             onClicked: {
+                    eltime.visible=false
+                    empty.visible=false
+                    complexit.visible=false
+                    positive.visible=false
                     removeLastValue()
                     sorted=0
                     currentStepIndex=0
@@ -122,8 +128,6 @@ Rectangle {
             }
               enabled: listModel.count>0
         }
-
-
    }
 }
         Item {
@@ -193,14 +197,10 @@ Rectangle {
           Connections {
                          target: getSortType(type)
                          onElapsedTimeChanged: {
-                            // complexity=  getSortType(type).elapsedTime()
-                              console.log("EEEEEEEEEEEEEEEE")
-                           time=elapsedTime
-                             eltime.visible=true
+                             time=elapsedTime
+                               eltime.visible=true
                                     }
                                 }
-
-
         Button {
             height: 50
             width: rightItem.width * 0.7
@@ -214,13 +214,16 @@ Rectangle {
             color:  parent.enabled ? "#3B5249" : "#748B82"
             font.pixelSize: 32}
             onClicked: {
+
                 if (listModel.count>0){
                     currentStepIndex = 0
                     arrayIntoQlist(values.slice())
                     getListOfSteps(type).backup()
                     getSortType(type).sort()
-                    //console.log(getSortType(type).time)
-                   //complexity=getSortType(type).getComplexity()
+
+                    getSort(type).accept(complexity)
+                    complex=complexity.getComplexity()
+                    complexit.visible=true
 
                     currentStepIndex++
                     updateGridView()
@@ -312,7 +315,19 @@ Rectangle {
             text:"Elapsed time: " +time+ " ms"
             font.bold: true
             font.pixelSize: 18
-           anchors.bottom: rightItem.bottom
+
+            anchors.left: parent.left
+            anchors.leftMargin: 35
+            anchors.topMargin: 100
+            color:  "#3B5249"
+            visible: false
+        }
+        Text {
+            id: complexit
+            text:"Theoretical complexity: " +complex
+            font.bold: true
+            font.pixelSize: 18
+
             anchors.left: parent.left
             anchors.leftMargin: 35
             anchors.topMargin: 100

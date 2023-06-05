@@ -1,6 +1,7 @@
 #ifndef BUBBLESORT_H
 #define BUBBLESORT_H
 
+#include "SortingAlg/Sorts/sortvisitor.h"
 #include "SortingAlg\List\list.h"
 #include <iostream>
 #include "sort.h"
@@ -15,16 +16,19 @@ private:
      List *list;
      int indexRight;
      int indexLeft;
-     int  complexity;
+     int counter=0;
 
 public:
-    BubbleSort( List *list):
-        list(list)
-        {
-        };
+       BubbleSort( List *list):
+           list(list)
+           {
+           };
 
+int getCounter();
+void  increaseCounter();
 public slots:
-    int getComplexity();
+    void accept(SortVisitor* visitor) override ;
+    int getLength();
     Step*  Save( );
     void sort();
 

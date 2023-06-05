@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include "SortingAlg/Sorts/complexityvisitor.h"
 #include "Tests\doctest.h"
 
 #include "SortingAlg\List\list.h"
@@ -31,12 +32,10 @@ int main(int argc, char *argv[])
     List array;
     engine.rootContext()->setContextProperty("array", &array);
 
-
-
-
-   // timingBubbleSort->sort(); // Виклик сортування з вимірюванням часу
-
     Sort* bubbleSort= new BubbleSort(&array);
+
+    ComplexityVisitor *complexity = new ComplexityVisitor();
+    engine.rootContext()->setContextProperty("complexity", complexity );
     Sort* timingBubbleSort = new TimingSortDecorator(bubbleSort);
     engine.rootContext()->setContextProperty("bubbleSort", bubbleSort);
     engine.rootContext()->setContextProperty("timingBubbleSort", timingBubbleSort);

@@ -11,8 +11,6 @@
 class List : public QObject
 {
     Q_OBJECT
-    //Q_PROPERTY(QList<int> items READ items NOTIFY itemsChanged)
-
 private:
     QList<int> m_items;
 
