@@ -1,9 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Windows/Window3.qml</file>
         <file>Windows/WindowSort.qml</file>
         <file>Windows/SecondWindowSort.qml</file>
         <file>Windows/WindowPatternSearching.qml</file>
+        <file>Windows/WindowTree.qml</file>
+        <file>Windows/SecondWindowTree.qml</file>
     </qresource>
 </RCC>
