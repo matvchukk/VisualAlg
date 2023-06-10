@@ -16,6 +16,12 @@ SOURCES += \
         SortingAlg/Sorts/step.cpp \
         SortingAlg/Sorts/timingsortdecorator.cpp \
         Tests/TestSorting/sortingTests.cpp \
+        TreeAlg/avltree.cpp \
+        TreeAlg/balancedecorator.cpp \
+        TreeAlg/colordecorator.cpp \
+        TreeAlg/redblacktree.cpp \
+        TreeAlg/tree.cpp \
+        TreeAlg/treenode.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -43,4 +49,10 @@ HEADERS += \
     SortingAlg/Sorts/sortdecorator.h \
     SortingAlg/Sorts/step.h \
     SortingAlg/Sorts/timingsortdecorator.h \
-    Tests/doctest.h
+    Tests/doctest.h \
+    TreeAlg/avltree.h \
+    TreeAlg/balancedecorator.h \
+    TreeAlg/colordecorator.h \
+    TreeAlg/redblacktree.h \
+    TreeAlg/tree.h \
+    TreeAlg/treenode.h
