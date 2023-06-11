@@ -8,6 +8,8 @@ class Tree {
 protected:
     TreeNode<T>* root;
 
+    virtual TreeNode<T>* rotateLeft(TreeNode<T>* node) = 0;
+    virtual TreeNode<T>* rotateRihgt(TreeNode<T>* node) = 0;
 public:
     Tree() : root(nullptr) {}
 
