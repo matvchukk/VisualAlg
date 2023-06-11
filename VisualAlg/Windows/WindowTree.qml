@@ -104,32 +104,6 @@ Rectangle {
                          }
                       }
              }
-             Row{
-                     Rectangle {
-                         width: 10
-                        height: button3.height
-                        color:  "#721F1F"
-                     }
-
-                     Button {
-                        id: button3
-                        background: Rectangle {
-                        color: "white"
-                            }
-                       text: "Quick Sort"
-                       contentItem: Text {
-                       text: button3.text
-                       color: "#721F1F"
-                       font.pixelSize: 32
-                       font.bold: true
-                       anchors.horizontalCenter: button3.horizontalCenter
-                       anchors.verticalCenter: button3.verticalCenter
-                        }
-                       onClicked: {
-                      createSecondWindow("SecondWindowTree.qml", 3)
-                   }
-               }
-    }
     }
 }
 
