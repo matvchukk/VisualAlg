@@ -13,8 +13,8 @@ private:
     void fixHeight(HeightDecorator<T>* node);
 
     int getBalance(HeightDecorator<T>* node) const;
-    HeightDecorator<T>* rotateRight(HeightDecorator<T>* node) override;
-    HeightDecorator<T>* rotateLeft(HeightDecorator<T>* node) override;
+    HeightDecorator<T>* rotateRight(HeightDecorator<T>* node) ;
+    HeightDecorator<T>* rotateLeft(HeightDecorator<T>* node) ;
 
     HeightDecorator<T>* balance(HeightDecorator<T>* node);
     HeightDecorator<T>* insertHelper(HeightDecorator<T>* node, const T& key);
