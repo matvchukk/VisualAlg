@@ -10,6 +10,7 @@ private:
 
     ColorDecorator<T>* rotateRight(ColorDecorator<T>* node) override;
     ColorDecorator<T>* rotateLeft(ColorDecorator<T>* node) override;
+    void transplant(ColorDecorator<T>* node1, ColorDecorator<T>* node2);
 
     void insertFixup(ColorDecorator<T>* node);
     void removeFixup(ColorDecorator<T>* node, ColorDecorator<T>* parentNode);

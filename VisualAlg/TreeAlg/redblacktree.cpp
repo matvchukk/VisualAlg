@@ -1,5 +1,20 @@
 #include "redblacktree.h"
 
+template <typename T>
+void RedBlackTree<T>::transplant(ColorDecorator<T>* node1, ColorDecorator<T>* node2) {
+    if (node1->getParent() == nullptr) {
+        this->root = node2;
+    } else if (node1 == node1->getParent()->getLeft()) {
+        node1->getParent()->setLeft(node2);
+    } else {
+        node1->getParent()->setRight(node2);
+    }
+
+    if (node2 != nullptr) {
+        node2->setParent(node1->getParent());
+    }
+}
+
 template<typename T>
 ColorDecorator<T>* RedBlackTree<T>::rotateRight(ColorDecorator<T>* node) {
     ColorDecorator<T>* pivot = node->getLeft();
