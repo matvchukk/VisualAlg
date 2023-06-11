@@ -8,9 +8,7 @@ template <typename T>
 class AVLTreeCreator : public TreeCreator<T>
 {
 public:
-    Tree<T>* createTree() const override {
-        return new AVLTree<T>();
-    }
+    Tree<T>* createTree(QList<T> data) const override;
 };
 
 #endif // AVLTREECREATOR_H

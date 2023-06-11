@@ -8,9 +8,7 @@ template <typename T>
 class RedBlackTreeCreator : public TreeCreator<T>
 {
 public:
-    Tree<T>* createTree() const override {
-        return new RedBlackTree<T>();
-    }
+    Tree<T>* createTree(QList<T> data) const override;
 };
 
 #endif // REDBLACKTREECREATOR_H
