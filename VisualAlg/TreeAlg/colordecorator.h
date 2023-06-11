@@ -7,7 +7,7 @@ template<typename T>
 class ColorDecorator : public TreeNode<T> {
 private:
     TreeNode<T>* node;
-    bool color; // red - 0, black - 1
+    bool color; // red - 1, black - 0
 
 public:
     explicit ColorDecorator(TreeNode<T>* node, bool color)
