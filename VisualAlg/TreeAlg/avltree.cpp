@@ -102,8 +102,8 @@ HeightDecorator<T>* AVLTree<T>::removeHelper(HeightDecorator<T>* node, const T& 
         if (!rightChild)
             return leftChild;
         HeightDecorator<T>* minNode = findMin(rightChild);
-        minNode->right = removeMin(rightChild);
-        minNode->left = leftChild;
+        minNode->setRight(removeMin(rightChild));
+        minNode->setLeft(leftChild);
         return balance(minNode);
     }
     return balance(node);
