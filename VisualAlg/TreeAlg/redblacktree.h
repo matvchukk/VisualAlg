@@ -8,8 +8,8 @@ template<typename T>
 class RedBlackTree : public Tree<T> {
 private:
 
-    ColorDecorator<T>* rotateRight(ColorDecorator<T>* node) override;
-    ColorDecorator<T>* rotateLeft(ColorDecorator<T>* node) override;
+    ColorDecorator<T>* rotateRight(ColorDecorator<T>* node) ;
+    ColorDecorator<T>* rotateLeft(ColorDecorator<T>* node) ;
     void transplant(ColorDecorator<T>* node1, ColorDecorator<T>* node2);
 
     void insertFixup(ColorDecorator<T>* node);
