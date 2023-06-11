@@ -18,6 +18,7 @@ SOURCES += \
         SortingAlg/Sorts/step.cpp \
         SortingAlg/Sorts/timingsortdecorator.cpp \
         Tests/TestSorting/sortingTests.cpp \
+        Tests/TestTrees/treeTest.cpp \
         TreeAlg/avltree.cpp \
         TreeAlg/avltreecreator.cpp \
         TreeAlg/colordecorator.cpp \
