@@ -1,6 +1,7 @@
 #ifndef SELECTIONSORT_H
 #define SELECTIONSORT_H
 
+#include "SortingAlg/Sorts/sortvisitor.h"
 #include "SortingAlg\List\list.h"
 #include <iostream>
 #include "sort.h"
@@ -13,19 +14,21 @@ private:
      List *list;
      int indexRight;
      int indexLeft;
-     int  complexity;
-
+     int counter=0;
 public:
-    SelectionSort( List *list):
-        list(list)
-        {
-        };
+     SelectionSort( List *list):
+         list(list)
+         {
+         };
 
+     int getLength();
+int getCounter();
+void  increaseCounter();
 public slots:
     Step*  Save( );
     void sort();
-    int getComplexity();
     void  callQmlSlot();
+    void accept(SortVisitor* visitor) override ;
 
 };
 

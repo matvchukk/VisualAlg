@@ -1,9 +1,20 @@
 #include "quickSort.h"
 
-int QuickSort:: getComplexity(){
-    return  complexity;
+void QuickSort::accept(SortVisitor* visitor) {
+        visitor->visitQuickSort(this);
+    }
+
+int QuickSort::getLength(){
+   return list->getSize();
 }
 
+int QuickSort:: getCounter(){
+    return counter;
+}
+
+void QuickSort:: increaseCounter(){
+     this->counter+=1;
+}
 
 Step*QuickSort:: Save( ) {
     return new Step(this->list->items(),this->indexLeft, this->indexRight);
@@ -12,7 +23,9 @@ Step*QuickSort:: Save( ) {
 void QuickSort::sort(){
     int right = list->getSize() - 1;
     quicksortlist(0, right);
+
 }
+
 void QuickSort:: callQmlSlot(){
     emit callQml();
 }
@@ -25,21 +38,22 @@ int QuickSort::partition(int left, int right){
     for(int j = left; j < right; j++){
         double currentValue = list->getValueAtIndex(j);
 
-        // Highlight
         this->indexLeft=j;
         this->indexRight=right;
-
+        this->increaseCounter();
         if( currentValue <= pivot){
             i++;
-callQmlSlot();
+            callQmlSlot();
+            this->increaseCounter();
             list->swapItems(i, j);
 
 
         }
-callQmlSlot();
+            callQmlSlot();
 
     }
-     list->swapItems(i+1, right);
+         this->increaseCounter();
+         list->swapItems(i+1, right);
 
 
     return i+1;

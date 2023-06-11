@@ -8,11 +8,13 @@ SOURCES += \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/Sorts/bubbleSort.cpp \
+        SortingAlg/Sorts/complexityvisitor.cpp \
         SortingAlg/Sorts/listofsteps.cpp \
         SortingAlg/Sorts/quickSort.cpp \
         SortingAlg/Sorts/selectionSort.cpp \
         SortingAlg/Sorts/sort.cpp \
         SortingAlg/Sorts/sortdecorator.cpp \
+        SortingAlg/Sorts/sortvisitor.cpp \
         SortingAlg/Sorts/step.cpp \
         SortingAlg/Sorts/timingsortdecorator.cpp \
         Tests/TestSorting/sortingTests.cpp \
@@ -46,11 +48,13 @@ HEADERS += \
     SortingAlg/List/list.h \
     SortingAlg/List/list.h \
     SortingAlg/Sorts/bubbleSort.h \
+    SortingAlg/Sorts/complexityvisitor.h \
     SortingAlg/Sorts/listofsteps.h \
     SortingAlg/Sorts/quickSort.h \
     SortingAlg/Sorts/selectionSort.h \
     SortingAlg/Sorts/sort.h \
     SortingAlg/Sorts/sortdecorator.h \
+    SortingAlg/Sorts/sortvisitor.h \
     SortingAlg/Sorts/step.h \
     SortingAlg/Sorts/timingsortdecorator.h \
     Tests/doctest.h \
