@@ -122,7 +122,7 @@ Window {
                     background: Rectangle {
                     color: "white"
                         }
-                   text: "Alg3"
+                   text: "Trees"
                    contentItem: Text {
                    text: button3.text
                    color: "#721F1F"
@@ -132,7 +132,7 @@ Window {
                    anchors.verticalCenter: button3.verticalCenter
                     }
                    onClicked: {
-                   createSecondWindow("../Windows/Window3.qml")
+                   createSecondWindow("../Windows/WindowTree.qml")
                }
            }
 }
