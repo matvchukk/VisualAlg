@@ -5,6 +5,7 @@ QT += quick
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        PatternsSearching/RabinKarp.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/Sorts/bubbleSort.cpp \
