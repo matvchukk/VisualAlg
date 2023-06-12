@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timingsortdecorator_0',['TimingSortDecorator',['../class_timing_sort_decorator.html',1,'']]]
+  ['quicksort_0',['QuickSort',['../class_quick_sort.html',1,'']]]
 ];

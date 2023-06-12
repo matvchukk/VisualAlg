@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sorttype_0',['sortType',['../class_sort_decorator.html#a9176557f8db12ffd8eac3370e2445983',1,'SortDecorator']]]
+  ['root_0',['root',['../class_tree.html#a29ae8a7019e28c88ab11181f44c727a3',1,'Tree']]]
 ];

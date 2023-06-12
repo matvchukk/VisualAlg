@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['timingsortdecorator_2ecpp_0',['timingsortdecorator.cpp',['../timingsortdecorator_8cpp.html',1,'']]],
-  ['timingsortdecorator_2eh_1',['timingsortdecorator.h',['../timingsortdecorator_8h.html',1,'']]]
+  ['quicksort_2ecpp_0',['quickSort.cpp',['../quick_sort_8cpp.html',1,'']]],
+  ['quicksort_2eh_1',['quickSort.h',['../quick_sort_8h.html',1,'']]]
 ];

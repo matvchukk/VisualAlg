@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['complexityvisitor_0',['ComplexityVisitor',['../class_complexity_visitor.html',1,'']]]
+  ['bubblesort_0',['BubbleSort',['../class_bubble_sort.html',1,'']]]
 ];

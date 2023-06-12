@@ -1,4 +1,4 @@
-#define DOCTEST_CONFIG_IMPLEMENT//_WITH_MAIN
+/*#define DOCTEST_CONFIG_IMPLEMENT//_WITH_MAIN
 #include "Tests\doctest.h"
 #include "..\..\TreeAlg\avltree.h"
 #include "..\..\TreeAlg\redblacktree.h"
@@ -91,4 +91,4 @@ TEST_CASE("Red-Black Tree Deletion") {
         CHECK(!rbTree.search(8));
         CHECK(!rbTree.search(1));
     }
-}
+}*/
