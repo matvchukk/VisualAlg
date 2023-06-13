@@ -29,7 +29,7 @@ void BoyerMoore::search(const QString& text, const QString& pattern)
             i += std::max(shift1, shift2);
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -79,4 +79,8 @@ std::vector<int> BoyerMoore::computeGoodSuffixTable(const QString& pattern)
     }
 
     return suffixShift;
+}
+
+std::vector<int>& BoyerMoore::getSearchPositions() {
+    return  searchPositions;
 }

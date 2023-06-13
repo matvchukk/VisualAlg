@@ -251,6 +251,17 @@ Rectangle {
                         implicitHeight: 40
                     }
 
+                    Button {
+                        text: "Collins Algorithm"
+                        onClicked: {
+                            context.setStrategy(collinsAlgorithm);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
+                    }
+
                 }
             }
         }

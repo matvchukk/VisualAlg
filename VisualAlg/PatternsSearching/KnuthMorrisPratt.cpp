@@ -32,7 +32,7 @@ void KnuthMorrisPratt::search(const QString& text, const QString& pattern)
                 ++i;
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -64,4 +64,8 @@ std::vector<int> KnuthMorrisPratt::computeLPSArray(const QString& pattern)
     }
 
     return lps;
+}
+
+std::vector<int>& KnuthMorrisPratt::getSearchPositions() {
+    return  searchPositions;
 }

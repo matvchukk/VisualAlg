@@ -39,7 +39,7 @@ void RabinKarp::search(const QString& text, const QString& pattern)
                 textHash = (textHash + q);
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -52,4 +52,7 @@ int RabinKarp::hash(const QString& str, int len, int q)
     return hash;
 }
 
+std::vector<int>& RabinKarp::getSearchPositions() {
+    return  searchPositions;
+}
 

@@ -25,7 +25,7 @@ void FiniteAutomata::search(const QString& text, const QString& pattern)
             positions.push_back(i - M + 1);
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -53,3 +53,6 @@ int FiniteAutomata::getNextState(const QString& pattern, int M, int state, int x
     return 0;
 }
 
+std::vector<int>& FiniteAutomata::getSearchPositions() {
+    return  searchPositions;
+}

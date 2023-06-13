@@ -30,7 +30,7 @@ void GallagherSyedGallagher::search(const QString& text, const QString& pattern)
             i += std::max(shift1, shift2);
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -82,4 +82,8 @@ std::vector<int> GallagherSyedGallagher::computeBadCharacterTable(const QString&
     }
 
     return badCharacter;
+}
+
+std::vector<int>& GallagherSyedGallagher::getSearchPositions() {
+    return  searchPositions;
 }

@@ -28,7 +28,7 @@ void BoyerMooreHorspool::search(const QString& text, const QString& pattern)
             i += shift != 0 ? shift : 1;
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -43,4 +43,8 @@ std::vector<int> BoyerMooreHorspool::computeBadCharacterTable(const QString& pat
     }
 
     return badCharacter;
+}
+
+std::vector<int>& BoyerMooreHorspool::getSearchPositions() {
+    return  searchPositions;
 }

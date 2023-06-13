@@ -28,7 +28,7 @@ void Smith::search(const QString& text, const QString& pattern)
             i += shift > 0 ? shift : 1;
         }
     }
-
+    searchPositions = positions;
     emit searchCompleted(positions);
 }
 
@@ -51,4 +51,8 @@ std::vector<int> Smith::computePrefixFunction(const QString& pattern)
     }
 
     return prefixFunction;
+}
+
+std::vector<int>& Smith::getSearchPositions() {
+    return  searchPositions;
 }

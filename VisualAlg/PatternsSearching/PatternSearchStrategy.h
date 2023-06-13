@@ -13,10 +13,11 @@ private:
 public:
     PatternSearchStrategy(QObject *parent = nullptr) : QObject(parent) {}
     virtual void search(const QString& text, const QString& pattern) = 0;
-    const std::vector<int>& getSearchPositions() const
-    {
-        return positions;
-    }
+//    const std::vector<int>& getSearchPositions() const
+//    {
+//        return positions;
+//    }
+    virtual std::vector<int>& getSearchPositions() = 0;
 
 signals:
     void searchCompleted(const std::vector<int>& positions);
