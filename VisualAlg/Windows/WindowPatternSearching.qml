@@ -166,43 +166,93 @@ Rectangle {
                     }
                 }
             }
-            ColumnLayout {
+            Row {
                 anchors.top: textVisualization.bottom
                 anchors.topMargin: 200
+                 spacing: 20
 
-                Button {
-                    text: "Rabin-Karp Algorithm"
-                    onClicked: {
-                        context.setStrategy(rabinKarp);
-                        context.executeStrategy(textToSearch, patternToSearch);
-                        resultText.visible = true;
+                ColumnLayout {
+                     spacing: 20
+                    Button {
+                        text: "Rabin-Karp Algorithm"
+                        onClicked: {
+                            context.setStrategy(rabinKarp);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
                     }
-                    implicitWidth: 200
-                    implicitHeight: 40
+
+                    Button {
+                        text: "Boyer Moore Algorithm"
+                        onClicked: {
+                            context.setStrategy(boyerMoore);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
+                    }
+                    Button {
+                        text: "Finite Automata Algorithm"
+                        onClicked: {
+                            context.setStrategy(finiteAutomata);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
+                    }
+                    Button {
+                        text: "KMP Algorithm"
+                        onClicked: {
+                            context.setStrategy(knuthMorrisPratt);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
+                    }
                 }
 
-                Button {
-                    text: "Boyer Moore Algorithm"
-                    onClicked: {
-                        context.setStrategy(boyerMoore);
-                        context.executeStrategy(textToSearch, patternToSearch);
-                        resultText.visible = true;
+                ColumnLayout {
+                     spacing: 20
+                    Button {
+                        text: "Boyer-Moore-Horspool Algorithm"
+                        onClicked: {
+                            context.setStrategy(boyerMooreHorspool);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
                     }
-                    implicitWidth: 200
-                    implicitHeight: 40
-                }
-                Button {
-                    text: "Finite Automata Algorithm"
-                    onClicked: {
-                        context.setStrategy(finiteAutomata);
-                        context.executeStrategy(textToSearch, patternToSearch);
-                        resultText.visible = true;
+
+                    Button {
+                        text: "Smith Algorithm"
+                        onClicked: {
+                            context.setStrategy(smith);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
                     }
-                    implicitWidth: 200
-                    implicitHeight: 40
+
+                    Button {
+                        text: "Gallagher-Syed-Gallagher Algorithm"
+                        onClicked: {
+                            context.setStrategy(gallagherSyedGallagher);
+                            context.executeStrategy(textToSearch, patternToSearch);
+                            resultText.visible = true;
+                        }
+                        implicitWidth: 200
+                        implicitHeight: 40
+                    }
+
                 }
             }
-
         }
     }
 
