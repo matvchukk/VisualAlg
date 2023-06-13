@@ -12,8 +12,10 @@
 #include "SortingAlg\Sorts\sort.h"
 
 
-#include "PatternsSearching\RabinKarp.h "
-
+#include "PatternsSearching/RabinKarp.h"
+#include "PatternsSearching/BoyerMoore.h"
+#include "PatternsSearching/FiniteAutomata.h"
+#include "PatternsSearching/PatternSearchContext.h"
 
 //namespace lab {
 //int doctestRun(int argc, char *argv[]){
@@ -49,11 +51,16 @@ int main(int argc, char *argv[])
     ListOfSteps listofstepsQ(quickSort);
     engine.rootContext()->setContextProperty("listofstepsQ", &listofstepsQ);
 
-    //
 
    //
-    RabinKarp rabinKarp;
-    engine.rootContext()->setContextProperty("rabinKarp", &rabinKarp);
+    PatternSearchContext* context = new PatternSearchContext(nullptr);
+    RabinKarp* rabinKarp = new RabinKarp(nullptr);
+    BoyerMoore* boyerMoore = new BoyerMoore(nullptr);
+    //FiniteAutomata* finiteAutomata = new FiniteAutomata(nullptr);
+    context->setStrategy(rabinKarp);
+    engine.rootContext()->setContextProperty("context", context);
+    engine.rootContext()->setContextProperty("rabinKarp", rabinKarp);
+    engine.rootContext()->setContextProperty("boyerMoore", boyerMoore);
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

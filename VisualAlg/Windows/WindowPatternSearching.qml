@@ -50,24 +50,20 @@ Rectangle {
                 placeholderText: "Text to search"
                 onTextChanged: {
                     textToSearch = text;
-                    if (!isSearching) {
-                        rabinKarp.search(textToSearch, patternToSearch);
-                    }
+                    resetSearchResult();
                 }
-                implicitWidth: 450 // Задайте бажану ширину
-                implicitHeight: 60 // Задайте бажану висоту
+                implicitWidth: 450
+                implicitHeight: 60
             }
 
             TextField {
                 placeholderText: "Pattern to search"
                 onTextChanged: {
                     patternToSearch = text;
-                    if (!isSearching) {
-                        rabinKarp.search(textToSearch, patternToSearch);
-                    }
+                    resetSearchResult();
                 }
-                implicitWidth: 450 // Задайте бажану ширину
-                implicitHeight: 60 // Задайте бажану висоту
+                implicitWidth: 450
+                implicitHeight: 60
             }
 
             Text {
@@ -170,11 +166,48 @@ Rectangle {
                     }
                 }
             }
+            ColumnLayout {
+                anchors.top: textVisualization.bottom
+                anchors.topMargin: 200
+
+                Button {
+                    text: "Rabin-Karp Algorithm"
+                    onClicked: {
+                        context.setStrategy(rabinKarp);
+                        context.executeStrategy(textToSearch, patternToSearch);
+                        resultText.visible = true;
+                    }
+                    implicitWidth: 200
+                    implicitHeight: 40
+                }
+
+                Button {
+                    text: "Boyer Moore Algorithm"
+                    onClicked: {
+                        context.setStrategy(boyerMoore);
+                        context.executeStrategy(textToSearch, patternToSearch);
+                        resultText.visible = true;
+                    }
+                    implicitWidth: 200
+                    implicitHeight: 40
+                }
+                Button {
+                    text: "Finite Automata Algorithm"
+                    onClicked: {
+                        //context.setStrategy(finite);
+                        context.executeStrategy(textToSearch, patternToSearch);
+                        resultText.visible = true;
+                    }
+                    implicitWidth: 200
+                    implicitHeight: 40
+                }
+            }
+
         }
     }
 
     Connections {
-        target: rabinKarp
+        target: context
         onSearchStarted: {
             isSearching = true;
             resetSearchResult();
