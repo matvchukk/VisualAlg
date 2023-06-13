@@ -1,32 +1,55 @@
-//#include "FiniteAutomata.h"
+#include "FiniteAutomata.h"
 
-//#include <QDebug>
-//#include <vector>
+void FiniteAutomata::search(const QString& text, const QString& pattern)
+{
+    int M = pattern.size();
+    int N = text.size();
 
-//void FiniteAutomata::calcTF(const QString& pattern, std::vector<std::vector<int>>& TF)
-//{
-//    int M = pattern.length();
-//    int x, state;
-//    for (state = 0; state <= M; ++state) {
-//        for (x = 0; x < 256; ++x) {
-//            TF[state][x] = calcNextState(pattern, state, QChar(x));
-//        }
-//    }
-//}
+    std::vector<std::vector<int>> TF(M + 1, std::vector<int>(256, 0));
 
-//void FiniteAutomata::search(const QString& text, const QString& pattern)
-//{
-//    int M = pattern.length();
-//    int N = text.length();
-//    std::vector<std::vector<int>> TF(M + 1, std::vector<int>(256));
+    int state, x;
+    for (state = 0; state <= M; ++state)
+    {
+        for (x = 0; x < 256; ++x)
+            TF[state][x] = getNextState(pattern, M, state, x);
+    }
 
-//    calcTF(pattern, TF);
+    std::vector<int> positions;
 
-//    int i, state = 0;
-//    for (i = 0; i < N; i++) {
-//        state = TF[state][text[i].toLatin1()];
-//        if (state == M) {
-//            qDebug() << "Given pattern is found at index" << i - M + 1;
-//        }
-//    }
-//}
+    state = 0;
+    for (int i = 0; i < N; ++i)
+    {
+        state = TF[state][text[i].unicode()];
+        if (state == M)
+        {
+            positions.push_back(i - M + 1);
+        }
+    }
+
+    emit searchCompleted(positions);
+}
+
+int FiniteAutomata::getNextState(const QString& pattern, int M, int state, int x)
+{
+    if (state < M && x == pattern[state].unicode())
+        return state + 1;
+
+    int ns;
+    for (ns = state; ns > 0; --ns)
+    {
+        if (pattern[ns - 1].unicode() == x)
+        {
+            int i;
+            for (i = 0; i < ns - 1; ++i)
+            {
+                if (pattern[i].unicode() != pattern[state - ns + 1 + i].unicode())
+                    break;
+            }
+            if (i == ns - 1)
+                return ns;
+        }
+    }
+
+    return 0;
+}
+

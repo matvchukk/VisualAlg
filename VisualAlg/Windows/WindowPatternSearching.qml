@@ -194,7 +194,7 @@ Rectangle {
                 Button {
                     text: "Finite Automata Algorithm"
                     onClicked: {
-                        //context.setStrategy(finite);
+                        context.setStrategy(finiteAutomata);
                         context.executeStrategy(textToSearch, patternToSearch);
                         resultText.visible = true;
                     }

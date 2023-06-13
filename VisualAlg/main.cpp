@@ -56,11 +56,12 @@ int main(int argc, char *argv[])
     PatternSearchContext* context = new PatternSearchContext(nullptr);
     RabinKarp* rabinKarp = new RabinKarp(nullptr);
     BoyerMoore* boyerMoore = new BoyerMoore(nullptr);
-    //FiniteAutomata* finiteAutomata = new FiniteAutomata(nullptr);
+    FiniteAutomata* finiteAutomata = new FiniteAutomata(nullptr);
     context->setStrategy(rabinKarp);
     engine.rootContext()->setContextProperty("context", context);
     engine.rootContext()->setContextProperty("rabinKarp", rabinKarp);
     engine.rootContext()->setContextProperty("boyerMoore", boyerMoore);
+    engine.rootContext()->setContextProperty("finiteAutomata", finiteAutomata);
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
