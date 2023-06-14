@@ -214,6 +214,14 @@ Rectangle {
                         implicitWidth: 200
                         implicitHeight: 40
                     }
+                    Text {
+                            id: elapsedTimeText
+                            visible: isSearching
+                            text: "Elapsed Time: " + context.elapsedTime
+                            font.bold: true
+                            font.pixelSize: 20
+                            color: "#154c79"
+                        }
                 }
 
                 ColumnLayout {
@@ -265,6 +273,8 @@ Rectangle {
                 }
             }
         }
+
+
     }
 
     Connections {
@@ -277,7 +287,12 @@ Rectangle {
             isSearching = false;
             resultText.visible = true;
             searchResult = positions;
+            elapsedTimeText.visible = true;
         }
+        onGetElapsedTime: {
+            //elapsedTime = timedContext.elapsedTime
+            elapsedTimeText.text = "Elapsed Time: " + elapsedTime;
+                }
     }
 
     function resetSearchResult() {
@@ -305,4 +320,11 @@ Rectangle {
         }
         return false;
     }
+
+    function getFormattedElapsedTime() {
+            var seconds = Math.floor(context.elapsedTime / 1000);
+            var milliseconds = context.elapsedTime % 1000;
+            //return seconds + "." + milliseconds + "s";
+        return milliseconds;
+        }
 }
