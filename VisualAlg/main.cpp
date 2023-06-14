@@ -2,8 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "SortingAlg/Sorts/complexityvisitor.h"
-#include "Tests\doctest.h"
+//#include "Tests\doctest.h"
 
 #include "SortingAlg\List\list.h"
 #include "SortingAlg\Sorts\bubbleSort.h"
@@ -11,25 +10,25 @@
 #include "SortingAlg\Sorts\quickSort.h"
 #include "SortingAlg\Sorts\listofsteps.h"
 #include "SortingAlg\Sorts\sort.h"
-#include "SortingAlg\Sorts\timingsortdecorator.h"
-
-#include "PatternsSearching/RabinKarp.h"
-#include "PatternsSearching/BoyerMoore.h"
-#include "PatternsSearching/FiniteAutomata.h"
-#include "PatternsSearching/PatternSearchContext.h"
-#include "PatternsSearching/KnuthMorrisPratt.h"
-#include "PatternsSearching/BoyerMooreHorspool.h"
-#include "PatternsSearching/Smith.h"
-#include "PatternsSearching/GallagherSyedGallagher.h"
 
 
+#include "PatternsSearching\PatternSearchContext.h"
+#include "PatternsSearching\RabinKarp.h"
+#include "PatternsSearching\BoyerMoore.h"
+#include "PatternsSearching\FiniteAutomata.h"
+#include "PatternsSearching\KnuthMorrisPratt.h"
+#include "PatternsSearching\BoyerMooreHorspool.h"
+#include "PatternsSearching\Smith.h"
+#include "PatternsSearching\GallagherSyedGallagher.h"
+#include "PatternsSearching\CollinsAlgorithm.h"
+#include "PatternsSearching\StateBoyerMoore.h"
 
 
 //namespace lab {
 //int doctestRun(int argc, char *argv[]){
-  //  doctest::Context context(argc, argv);
-    //    int result = context.run();
-      //  return result;//
+//    doctest::Context context(argc, argv);
+//        int result = context.run();
+//        return result;//
 //}
 int main(int argc, char *argv[])
 {
@@ -42,30 +41,21 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("array", &array);
 
     Sort* bubbleSort= new BubbleSort(&array);
-
-    ComplexityVisitor *complexity = new ComplexityVisitor();
-    engine.rootContext()->setContextProperty("complexity", complexity );
-    Sort* timingBubbleSort = new TimingSortDecorator(bubbleSort);
     engine.rootContext()->setContextProperty("bubbleSort", bubbleSort);
-    engine.rootContext()->setContextProperty("timingBubbleSort", timingBubbleSort);
 
     Sort* selectionSort= new SelectionSort(&array);
     engine.rootContext()->setContextProperty("selectionSort", selectionSort);
-    Sort* timingSelectionSort = new TimingSortDecorator(selectionSort);
-    engine.rootContext()->setContextProperty("timingSelectionSort", timingSelectionSort);
 
     Sort* quickSort= new QuickSort(&array);
     engine.rootContext()->setContextProperty("quickSort", quickSort);
-    Sort* timingQuickSort = new TimingSortDecorator(quickSort);
-    engine.rootContext()->setContextProperty("timingQuickSort", timingQuickSort);
 
-    ListOfSteps listofstepsB(timingBubbleSort);
+    ListOfSteps listofstepsB(bubbleSort);
     engine.rootContext()->setContextProperty("listofstepsB", &listofstepsB);
 
-    ListOfSteps listofstepsS(timingSelectionSort);
+    ListOfSteps listofstepsS(selectionSort);
     engine.rootContext()->setContextProperty("listofstepsS", &listofstepsS);
 
-    ListOfSteps listofstepsQ(timingQuickSort);
+    ListOfSteps listofstepsQ(quickSort);
     engine.rootContext()->setContextProperty("listofstepsQ", &listofstepsQ);
 
 
@@ -93,7 +83,13 @@ int main(int argc, char *argv[])
     GallagherSyedGallagher* gallagherSyedGallagher = new GallagherSyedGallagher(nullptr);
     engine.rootContext()->setContextProperty("gallagherSyedGallagher", gallagherSyedGallagher);
 
-    context->setStrategy(rabinKarp);
+    CollinsAlgorithm* collinsAlgorithm = new CollinsAlgorithm(nullptr);
+    engine.rootContext()->setContextProperty("collinsAlgorithm", collinsAlgorithm);
+
+    StateBoyerMoore* stateBoyerMoore = new StateBoyerMoore(nullptr);
+    engine.rootContext()->setContextProperty("stateBoyerMoore", stateBoyerMoore);
+
+    context->setStrategy(boyerMoore);
     engine.rootContext()->setContextProperty("context", context);
 
 
