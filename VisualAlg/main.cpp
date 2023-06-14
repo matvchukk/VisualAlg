@@ -13,7 +13,16 @@
 #include "SortingAlg\Sorts\sort.h"
 #include "SortingAlg\Sorts\timingsortdecorator.h"
 
-#include "PatternsSearching\RabinKarp.h "
+#include "PatternsSearching/RabinKarp.h"
+#include "PatternsSearching/BoyerMoore.h"
+#include "PatternsSearching/FiniteAutomata.h"
+#include "PatternsSearching/PatternSearchContext.h"
+#include "PatternsSearching/KnuthMorrisPratt.h"
+#include "PatternsSearching/BoyerMooreHorspool.h"
+#include "PatternsSearching/Smith.h"
+#include "PatternsSearching/GallagherSyedGallagher.h"
+
+
 
 
 //namespace lab {
@@ -59,11 +68,34 @@ int main(int argc, char *argv[])
     ListOfSteps listofstepsQ(timingQuickSort);
     engine.rootContext()->setContextProperty("listofstepsQ", &listofstepsQ);
 
-    //
 
    //
-    RabinKarp rabinKarp;
-    engine.rootContext()->setContextProperty("rabinKarp", &rabinKarp);
+    PatternSearchContext* context = new PatternSearchContext(nullptr);
+
+    RabinKarp* rabinKarp = new RabinKarp(nullptr);
+    engine.rootContext()->setContextProperty("rabinKarp", rabinKarp);
+
+    BoyerMoore* boyerMoore = new BoyerMoore(nullptr);
+    engine.rootContext()->setContextProperty("boyerMoore", boyerMoore);
+
+    FiniteAutomata* finiteAutomata = new FiniteAutomata(nullptr);
+    engine.rootContext()->setContextProperty("finiteAutomata", finiteAutomata);
+
+    KnuthMorrisPratt* knuthMorrisPratt = new KnuthMorrisPratt(nullptr);
+    engine.rootContext()->setContextProperty("knuthMorrisPratt", knuthMorrisPratt);
+
+    BoyerMooreHorspool* boyerMooreHorspool = new BoyerMooreHorspool(nullptr);
+    engine.rootContext()->setContextProperty("boyerMooreHorspool", boyerMooreHorspool);
+
+    Smith* smith = new Smith(nullptr);
+    engine.rootContext()->setContextProperty("smith", smith);
+
+    GallagherSyedGallagher* gallagherSyedGallagher = new GallagherSyedGallagher(nullptr);
+    engine.rootContext()->setContextProperty("gallagherSyedGallagher", gallagherSyedGallagher);
+
+    context->setStrategy(rabinKarp);
+    engine.rootContext()->setContextProperty("context", context);
+
 
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

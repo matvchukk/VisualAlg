@@ -1,25 +1,37 @@
-#ifndef RABINKARP_H
-#define RABINKARP_H
-
+#ifndef RK_H
+#define RK_H
 #include <QObject>
 #include <QString>
 #include <vector>
-
-class RabinKarp : public QObject
+#include "PatternSearchStrategy.h"
+/// The RabinKarp class implements the Rabin-Karp pattern search algorithm.
+class RabinKarp : public PatternSearchStrategy
 {
     Q_OBJECT
-public:
-    explicit RabinKarp(QObject *parent = nullptr);
-
-    Q_INVOKABLE void search(const QString& text, const QString& pattern);
-
-signals:
-    void searchCompleted(const std::vector<int>& positions);
 
 private:
+    std::vector<int> searchPositions;
+
+public:
+    RabinKarp(QObject *parent) : PatternSearchStrategy(parent) {}
+    /// Searches for the pattern in the given text using the Rabin-Karp algorithm
+    /// @param text The text to search in
+    /// @param pattern The pattern to search for
+    Q_INVOKABLE void search(const QString& text, const QString& pattern) override;
+    /// Returns the positions where the pattern was found in the text
+    /// @returns A reference to the vector of search positions
+    Q_INVOKABLE std::vector<int>& getSearchPositions() override;
+
+private:
+    /// Computes the hash value of a string
+    /// @param str The string to compute the hash value for
+    /// @param len The length of the string
+    /// @param q A prime number used for the hash calculation
+    /// @returns The computed hash value
     int hash(const QString& str, int len, int q);
-//    int rehash(const QString& str, int oldIndex, int newIndex, int oldHash, int h, int q);
 };
 
 
-#endif // RABINKARP_H
+#endif // RK_H
+
+
