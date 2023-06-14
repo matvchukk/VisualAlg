@@ -1,5 +1,7 @@
 #include "RabinKarp.h"
-
+/// Searches for the pattern in the given text using the Rabin-Karp algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void RabinKarp::search(const QString& text, const QString& pattern)
 {
     const int d = 256; // кількість символів
@@ -42,7 +44,11 @@ void RabinKarp::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the hash value of a string
+/// @param str The string to compute the hash value for
+/// @param len The length of the string
+/// @param q A prime number used for the hash calculation
+/// @returns The computed hash value
 int RabinKarp::hash(const QString& str, int len, int q)
 {
     int hash = 0;
@@ -51,7 +57,8 @@ int RabinKarp::hash(const QString& str, int len, int q)
     }
     return hash;
 }
-
+/// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& RabinKarp::getSearchPositions() {
     return  searchPositions;
 }

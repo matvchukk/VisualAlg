@@ -1,5 +1,7 @@
 #include "KnuthMorrisPratt.h"
-
+/// Searches for the pattern in the given text using the Knuth-Morris-Pratt algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void KnuthMorrisPratt::search(const QString& text, const QString& pattern)
 {
     int M = pattern.size();
@@ -35,7 +37,9 @@ void KnuthMorrisPratt::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the Longest Proper Prefix which is also a Suffix (LPS) array for the pattern
+/// @param pattern The pattern to search for
+/// @returns The computed LPS array
 std::vector<int> KnuthMorrisPratt::computeLPSArray(const QString& pattern)
 {
     int M = pattern.size();
@@ -65,7 +69,8 @@ std::vector<int> KnuthMorrisPratt::computeLPSArray(const QString& pattern)
 
     return lps;
 }
-
+/// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& KnuthMorrisPratt::getSearchPositions() {
     return  searchPositions;
 }

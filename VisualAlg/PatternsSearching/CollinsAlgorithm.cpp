@@ -1,5 +1,7 @@
 #include "CollinsAlgorithm.h"
-
+/// Searches for the pattern in the given text using the Collins algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void CollinsAlgorithm::search(const QString& text, const QString& pattern)
 {
     int n = text.length();
@@ -31,7 +33,9 @@ void CollinsAlgorithm::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the jump table for the pattern
+/// @param pattern The pattern for which to compute the jump table
+/// @returns The computed jump table
 std::vector<int> CollinsAlgorithm::computeJumpTable(const QString& pattern)
 {
     int m = pattern.length();
@@ -54,7 +58,10 @@ std::vector<int> CollinsAlgorithm::computeJumpTable(const QString& pattern)
 
     return jumpTable;
 }
-
+/// Computes the length of the suffix of the pattern at position p
+/// @param pattern The pattern for which to compute the suffix length
+/// @param p The position of the suffix
+/// @returns The length of the suffix
 int CollinsAlgorithm::computeSuffixLength(const QString& pattern, int p)
 {
     int length = 0;
@@ -66,7 +73,10 @@ int CollinsAlgorithm::computeSuffixLength(const QString& pattern, int p)
     }
     return length;
 }
-
+/// Checks if a string is a prefix of the pattern
+/// @param pattern The pattern to check against
+/// @param p The position to start the comparison
+/// @returns True if the string is a prefix, false otherwise
 bool CollinsAlgorithm::isPrefix(const QString& pattern, int p)
 {
     int patternLength = pattern.length();
@@ -77,7 +87,8 @@ bool CollinsAlgorithm::isPrefix(const QString& pattern, int p)
     }
     return true;
 }
-
+/// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& CollinsAlgorithm::getSearchPositions() {
     return  searchPositions;
 }

@@ -1,5 +1,7 @@
 #include "GallagherSyedGallagher.h"
-
+/// Searches for the pattern in the given text using the Gallagher-Syed-Gallagher algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void GallagherSyedGallagher::search(const QString& text, const QString& pattern)
 {
     int n = text.length();
@@ -33,7 +35,9 @@ void GallagherSyedGallagher::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the good suffix table for the pattern
+/// @param pattern The pattern to search for
+/// @returns The computed good suffix table
 std::vector<int> GallagherSyedGallagher::computeGoodSuffixTable(const QString& pattern)
 {
     int m = pattern.length();
@@ -70,7 +74,9 @@ std::vector<int> GallagherSyedGallagher::computeGoodSuffixTable(const QString& p
 
     return goodSuffix;
 }
-
+/// Computes the bad character table for the pattern
+/// @param pattern The pattern to search for
+/// @returns The computed bad character table
 std::vector<int> GallagherSyedGallagher::computeBadCharacterTable(const QString& pattern)
 {
     std::vector<int> badCharacter(256, -1);
@@ -83,7 +89,8 @@ std::vector<int> GallagherSyedGallagher::computeBadCharacterTable(const QString&
 
     return badCharacter;
 }
-
+// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& GallagherSyedGallagher::getSearchPositions() {
     return  searchPositions;
 }

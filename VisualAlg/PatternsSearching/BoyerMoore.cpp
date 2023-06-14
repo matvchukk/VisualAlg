@@ -1,5 +1,8 @@
 #include "BoyerMoore.h"
-
+/// Searches for the pattern in the given text using the Boyer-Moore algorithm.
+/// @param text The text to search in.
+/// @param pattern The pattern to search for.
+/// @returns The positions where the pattern is found.
 void BoyerMoore::search(const QString& text, const QString& pattern)
 {
     int n = text.length();
@@ -32,7 +35,9 @@ void BoyerMoore::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the bad character table for the Boyer-Moore algorithm.
+/// @param pattern The pattern to compute the table for.
+/// @returns The bad character table.
 std::vector<int> BoyerMoore::computeBadCharacterTable(const QString& pattern)
 {
     std::vector<int> badCharacter(256, -1);
@@ -44,7 +49,9 @@ std::vector<int> BoyerMoore::computeBadCharacterTable(const QString& pattern)
 
     return badCharacter;
 }
-
+/// Computes the good suffix table for the Boyer-Moore algorithm.
+/// @param pattern The pattern to compute the table for.
+/// @returns The good suffix table.
 std::vector<int> BoyerMoore::computeGoodSuffixTable(const QString& pattern)
 {
     int m = pattern.length();
@@ -80,7 +87,8 @@ std::vector<int> BoyerMoore::computeGoodSuffixTable(const QString& pattern)
 
     return suffixShift;
 }
-
+/// Returns the positions where the pattern is found in the text.
+/// @returns The positions where the pattern is found.
 std::vector<int>& BoyerMoore::getSearchPositions() {
     return  searchPositions;
 }

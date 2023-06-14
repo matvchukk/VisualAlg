@@ -1,5 +1,7 @@
 #include "Smith.h"
-
+/// Searches for the pattern in the given text using the Smith algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void Smith::search(const QString& text, const QString& pattern)
 {
     int n = text.length();
@@ -31,7 +33,9 @@ void Smith::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the prefix function for the pattern
+/// @param pattern The pattern to compute the prefix function for
+/// @returns The computed prefix function
 std::vector<int> Smith::computePrefixFunction(const QString& pattern)
 {
     int m = pattern.length();
@@ -52,7 +56,8 @@ std::vector<int> Smith::computePrefixFunction(const QString& pattern)
 
     return prefixFunction;
 }
-
+/// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& Smith::getSearchPositions() {
     return  searchPositions;
 }

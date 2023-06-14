@@ -1,5 +1,7 @@
 #include "FiniteAutomata.h"
-
+/// Searches for the pattern in the given text using the Finite Automata algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void FiniteAutomata::search(const QString& text, const QString& pattern)
 {
     int M = pattern.size();
@@ -28,7 +30,12 @@ void FiniteAutomata::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Returns the next state of the Finite Automata based on the current state and input
+/// @param pattern The pattern to search for
+/// @param M The length of the pattern
+/// @param state The current state of the Finite Automata
+/// @param x The input character
+/// @returns The next state of the Finite Automata
 int FiniteAutomata::getNextState(const QString& pattern, int M, int state, int x)
 {
     if (state < M && x == pattern[state].unicode())
@@ -52,7 +59,8 @@ int FiniteAutomata::getNextState(const QString& pattern, int M, int state, int x
 
     return 0;
 }
-
+/// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& FiniteAutomata::getSearchPositions() {
     return  searchPositions;
 }

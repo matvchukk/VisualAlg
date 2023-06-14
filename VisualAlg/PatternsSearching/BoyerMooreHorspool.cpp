@@ -1,5 +1,7 @@
 #include "BoyerMooreHorspool.h"
-
+/// Searches for the pattern in the given text using the Boyer-Moore-Horspool algorithm
+/// @param text The text to search in
+/// @param pattern The pattern to search for
 void BoyerMooreHorspool::search(const QString& text, const QString& pattern)
 {
     int n = text.length();
@@ -31,7 +33,9 @@ void BoyerMooreHorspool::search(const QString& text, const QString& pattern)
     searchPositions = positions;
     emit searchCompleted(positions);
 }
-
+/// Computes the bad character table for the pattern
+/// @param pattern The pattern for which to compute the table
+/// @returns The computed bad character table
 std::vector<int> BoyerMooreHorspool::computeBadCharacterTable(const QString& pattern)
 {
     std::vector<int> badCharacter(256, pattern.length());
@@ -44,7 +48,8 @@ std::vector<int> BoyerMooreHorspool::computeBadCharacterTable(const QString& pat
 
     return badCharacter;
 }
-
+/// Returns the positions where the pattern was found in the text
+/// @returns A reference to the vector of search positions
 std::vector<int>& BoyerMooreHorspool::getSearchPositions() {
     return  searchPositions;
 }
