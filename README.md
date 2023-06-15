@@ -1,5 +1,6 @@
 <b> <em> Visualization of algorithms </em> </b>
 
+ Documentation https://yuliapetryk.github.io/VisualAlg/VisualAlg/doc/html/
  
  <b>Developed a program to demonstrate the functionality of a specific class of algorithms:  </b>
 
