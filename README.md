@@ -3,7 +3,7 @@
  
  <b>Developed a program to demonstrate the functionality of a specific class of algorithms:  </b>
 
-  1) Sorting algorithms 
+  1) Sorting algorithms *(was responsible Petryk Yuliia)*
 
        1. BubbleSort
  
@@ -11,13 +11,13 @@
 
        3. QuickSort
      
-  2) Tree operations 
+  2) Tree operations *(was responsible Posternak Taisiia)*
   
       1. RedBlackTree
 
       2. AVLTree
 
-  3) Pattern search algorithms using hash functions 
+  3) Pattern search algorithms using hash functions  *(was responsible Matviichuk Anastasiia)*
 
       1. BoyerMoore
 
