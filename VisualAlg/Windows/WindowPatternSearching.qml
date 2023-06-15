@@ -184,16 +184,16 @@ Rectangle {
                         implicitHeight: 40
                     }
 
-                    Button {
-                        text: "Boyer Moore Algorithm"
-                        onClicked: {
-                            context.setStrategy(boyerMoore);
-                            context.executeStrategy(textToSearch, patternToSearch);
-                            resultText.visible = true;
-                        }
-                        implicitWidth: 200
-                        implicitHeight: 40
-                    }
+//                    Button {
+//                        text: "Boyer Moore Algorithm"
+//                        onClicked: {
+//                            context.setStrategy(boyerMoore);
+//                            context.executeStrategy(textToSearch, patternToSearch);
+//                            resultText.visible = true;
+//                        }
+//                        implicitWidth: 200
+//                        implicitHeight: 40
+//                    }
                     Button {
                         text: "Finite Automata Algorithm"
                         onClicked: {
@@ -214,20 +214,38 @@ Rectangle {
                         implicitWidth: 200
                         implicitHeight: 40
                     }
-                }
-
-                ColumnLayout {
-                     spacing: 20
                     Button {
-                        text: "Boyer-Moore-Horspool Algorithm"
+                        text: "Boyer-Moore Algorithm"
                         onClicked: {
-                            context.setStrategy(boyerMooreHorspool);
+                            context.setStrategy(stateBoyerMoore);
                             context.executeStrategy(textToSearch, patternToSearch);
                             resultText.visible = true;
                         }
                         implicitWidth: 200
                         implicitHeight: 40
                     }
+                    Text {
+                            id: elapsedTimeText
+                            visible: isSearching
+                            text: "Elapsed Time: " + context.elapsedTime
+                            font.bold: true
+                            font.pixelSize: 20
+                            color: "#154c79"
+                        }
+                }
+
+                ColumnLayout {
+                     spacing: 20
+//                    Button {
+//                        text: "Boyer-Moore-Horspool Algorithm"
+//                        onClicked: {
+//                            context.setStrategy(boyerMooreHorspool);
+//                            context.executeStrategy(textToSearch, patternToSearch);
+//                            resultText.visible = true;
+//                        }
+//                        implicitWidth: 200
+//                        implicitHeight: 40
+//                    }
 
                     Button {
                         text: "Smith Algorithm"
@@ -265,6 +283,8 @@ Rectangle {
                 }
             }
         }
+
+
     }
 
     Connections {
@@ -277,7 +297,12 @@ Rectangle {
             isSearching = false;
             resultText.visible = true;
             searchResult = positions;
+            elapsedTimeText.visible = true;
         }
+        onGetElapsedTime: {
+            //elapsedTime = timedContext.elapsedTime
+            elapsedTimeText.text = "Elapsed Time: " + elapsedTime;
+                }
     }
 
     function resetSearchResult() {
@@ -305,4 +330,11 @@ Rectangle {
         }
         return false;
     }
+
+    function getFormattedElapsedTime() {
+            var seconds = Math.floor(context.elapsedTime / 1000);
+            var milliseconds = context.elapsedTime % 1000;
+            //return seconds + "." + milliseconds + "s";
+        return milliseconds;
+        }
 }

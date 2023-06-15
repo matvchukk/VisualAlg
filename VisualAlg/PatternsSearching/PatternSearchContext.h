@@ -26,9 +26,11 @@ public:
         if (searchStrategy)
         {
             QObject::disconnect(searchStrategy, &PatternSearchStrategy::searchCompleted, this, &PatternSearchContext::searchCompleted);
+            QObject::disconnect(searchStrategy, &PatternSearchStrategy::getElapsedTime, this, &PatternSearchContext::getElapsedTime);
         }
         searchStrategy = newSetStrategy;
         QObject::connect(searchStrategy, &PatternSearchStrategy::searchCompleted, this, &PatternSearchContext::searchCompleted);
+        QObject::connect(searchStrategy, &PatternSearchStrategy::getElapsedTime, this, &PatternSearchContext::getElapsedTime);
     }
     /// Executes the pattern search strategy
     /// @param text The text to search in
@@ -42,8 +44,14 @@ public:
     }
 
 signals:
+    /// Signal emitted when the search operation is started.
     void searchStarted();
+    /// Signal emitted when the search operation is completed.
+    /// @param positions A vector containing the positions where the pattern was found.
     void searchCompleted(const std::vector<int>& positions);
+    /// Signal emitted when the elapsed time is available.
+    /// @param elapsedTime The elapsed time in milliseconds.
+    void getElapsedTime(int elapsedTime);
 };
 
 #endif // PATTERNSEARCHCONTEXT_H
