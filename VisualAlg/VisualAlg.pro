@@ -5,7 +5,16 @@ QT += quick
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        PatternsSearching/BoyerMoore.cpp \
+        PatternsSearching/BoyerMooreHorspool.cpp \
+        PatternsSearching/CollinsAlgorithm.cpp \
+        PatternsSearching/FiniteAutomata.cpp \
+        PatternsSearching/GallagherSyedGallagher.cpp \
+        PatternsSearching/KnuthMorrisPratt.cpp \
         PatternsSearching/RabinKarp.cpp \
+        PatternsSearching/Smith.cpp \
+        PatternsSearching/StateBoyerMoore.cpp \
+        PatternsSearching/TimedPatternSearchStrategy.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/List/list.cpp \
         SortingAlg/Sorts/bubbleSort.cpp \
@@ -46,7 +55,18 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    PatternsSearching/BoyerMoore.h \
+    PatternsSearching/BoyerMooreHorspool.h \
+    PatternsSearching/CollinsAlgorithm.h \
+    PatternsSearching/FiniteAutomata.h \
+    PatternsSearching/GallagherSyedGallagher.h \
+    PatternsSearching/KnuthMorrisPratt.h \
+    PatternsSearching/PatternSearchContext.h \
+    PatternsSearching/PatternSearchStrategy.h \
     PatternsSearching/RabinKarp.h \
+    PatternsSearching/Smith.h \
+    PatternsSearching/StateBoyerMoore.h \
+    PatternsSearching/TimedPatternSearchStrategy.h \
     SortingAlg/List/list.h \
     SortingAlg/List/list.h \
     SortingAlg/Sorts/bubbleSort.h \
