@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "Tests/doctest.h"
 #include "PatternsSearching\PatternSearchContext.h"
+#include "PatternsSearching\PatternSearchStrategy.h"
 #include "PatternsSearching\RabinKarp.h"
 #include "PatternsSearching\BoyerMoore.h"
 #include "PatternsSearching\FiniteAutomata.h"
@@ -22,7 +23,7 @@ BoyerMooreHorspool* bmhAlgorithm = new BoyerMooreHorspool(nullptr);
 Smith* smAlgorithm = new Smith(nullptr);
 GallagherSyedGallagher* gsgAlgorithm = new GallagherSyedGallagher(nullptr);
 CollinsAlgorithm* colAlgorithm = new CollinsAlgorithm(nullptr);
-
+//PatternSearchStrategy* strategy = bmAlgoAlgorithm;
 TEST_CASE("Boyer-Moore pattern search") {
 
     context->setStrategy(bmAlgoAlgorithm);
@@ -33,8 +34,8 @@ TEST_CASE("Boyer-Moore pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        bmAlgoAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmAlgoAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -45,8 +46,8 @@ TEST_CASE("Boyer-Moore pattern search") {
         std::vector<int> expected = {4};
 
         std::vector<int> positions;
-        bmAlgoAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmAlgoAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -57,8 +58,8 @@ TEST_CASE("Boyer-Moore pattern search") {
         std::vector<int> expected = {5};
 
         std::vector<int> positions;
-        bmAlgoAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmAlgoAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -70,8 +71,8 @@ TEST_CASE("Boyer-Moore pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        bmAlgoAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmAlgoAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -81,8 +82,10 @@ TEST_CASE("Boyer-Moore pattern search") {
         QString pattern = "xyz";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(bmAlgoAlgorithm->search(text, pattern));
-        std::vector<int> positions = bmAlgoAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
+
         CHECK(positions == expected);
     }
 }
@@ -97,8 +100,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        rkAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = rkAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -109,8 +112,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {4};
 
         std::vector<int> positions;
-        rkAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = rkAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -121,8 +124,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {2};
 
         std::vector<int> positions;
-        rkAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = rkAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -133,8 +136,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        rkAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = rkAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -144,8 +147,10 @@ TEST_CASE("Rabin-Karp pattern search") {
         QString pattern = "amr";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(rkAlgorithm->search(text, pattern));
-        std::vector<int> positions = rkAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
+
         CHECK(positions == expected);
     }
 }
@@ -160,8 +165,8 @@ TEST_CASE("Finite Automata pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        faAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = faAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -172,8 +177,8 @@ TEST_CASE("Finite Automata pattern search") {
         std::vector<int> expected = {4};
 
         std::vector<int> positions;
-        faAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = faAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -184,8 +189,8 @@ TEST_CASE("Finite Automata pattern search") {
         std::vector<int> expected = {2};
 
         std::vector<int> positions;
-        faAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = faAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -196,8 +201,8 @@ TEST_CASE("Finite Automata pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        faAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = faAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -207,8 +212,9 @@ TEST_CASE("Finite Automata pattern search") {
         QString pattern = "xyz";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(faAlgorithm->search(text, pattern));
-        std::vector<int> positions = faAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
         CHECK(positions == expected);
     }
 }
@@ -223,8 +229,8 @@ TEST_CASE("Knuth-Morris-Pratt pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        kmpAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = kmpAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -235,8 +241,8 @@ TEST_CASE("Knuth-Morris-Pratt pattern search") {
         std::vector<int> expected = {8};
 
         std::vector<int> positions;
-        kmpAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = kmpAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -247,8 +253,8 @@ TEST_CASE("Knuth-Morris-Pratt pattern search") {
         std::vector<int> expected = {6};
 
         std::vector<int> positions;
-        kmpAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = kmpAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -259,8 +265,8 @@ TEST_CASE("Knuth-Morris-Pratt pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        kmpAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = kmpAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -270,8 +276,10 @@ TEST_CASE("Knuth-Morris-Pratt pattern search") {
         QString pattern = "xyz";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(kmpAlgorithm->search(text, pattern));
-        std::vector<int> positions = kmpAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
+
         CHECK(positions == expected);
     }
 }
@@ -286,8 +294,8 @@ TEST_CASE("Boyer-Moore-Horspool pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        bmhAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmhAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -298,8 +306,8 @@ TEST_CASE("Boyer-Moore-Horspool pattern search") {
         std::vector<int> expected = {6};
 
         std::vector<int> positions;
-        bmhAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmhAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -310,8 +318,8 @@ TEST_CASE("Boyer-Moore-Horspool pattern search") {
         std::vector<int> expected = {3};
 
         std::vector<int> positions;
-        bmhAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmhAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -322,8 +330,8 @@ TEST_CASE("Boyer-Moore-Horspool pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        bmhAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = bmhAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -333,8 +341,9 @@ TEST_CASE("Boyer-Moore-Horspool pattern search") {
         QString pattern = "xyz";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(bmhAlgorithm->search(text, pattern));
-        std::vector<int> positions = bmhAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
         CHECK(positions == expected);
     }
 }
@@ -349,8 +358,8 @@ TEST_CASE("Smith pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        smAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = smAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -361,9 +370,9 @@ TEST_CASE("Smith pattern search") {
         std::vector<int> expected = {4};
 
         std::vector<int> positions;
-        smAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = smAlgorithm->getSearchPositions());
-        qDebug() << "Positions2:" << smAlgorithm->getSearchPositions();
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
+        //qDebug() << "Positions2:" << smAlgorithm->getSearchPositions();
 
         CHECK(positions == expected);
     }
@@ -374,8 +383,8 @@ TEST_CASE("Smith pattern search") {
         std::vector<int> expected = {2};
 
         std::vector<int> positions;
-        smAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = smAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -386,8 +395,8 @@ TEST_CASE("Smith pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        smAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = smAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -397,8 +406,10 @@ TEST_CASE("Smith pattern search") {
         QString pattern = "xyz";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(smAlgorithm->search(text, pattern));
-        std::vector<int> positions = smAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
+
         CHECK(positions == expected);
     }
 }
@@ -412,8 +423,8 @@ TEST_CASE("Gallager-Syed-Gallager pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        gsgAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = gsgAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -424,8 +435,8 @@ TEST_CASE("Gallager-Syed-Gallager pattern search") {
         std::vector<int> expected = {5};
 
         std::vector<int> positions;
-        gsgAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = gsgAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -436,8 +447,8 @@ TEST_CASE("Gallager-Syed-Gallager pattern search") {
         std::vector<int> expected = {3};
 
         std::vector<int> positions;
-        gsgAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = gsgAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -448,8 +459,8 @@ TEST_CASE("Gallager-Syed-Gallager pattern search") {
         std::vector<int> expected = {0, 7};
 
         std::vector<int> positions;
-        gsgAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = gsgAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -459,8 +470,9 @@ TEST_CASE("Gallager-Syed-Gallager pattern search") {
         QString pattern = "xyz";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(gsgAlgorithm->search(text, pattern));
-        std::vector<int> positions = gsgAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
         CHECK(positions == expected);
     }
 }
@@ -473,8 +485,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {0};
 
         std::vector<int> positions;
-        colAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = colAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -485,8 +497,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {8};
 
         std::vector<int> positions;
-        colAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = colAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -497,8 +509,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {4};
 
         std::vector<int> positions;
-        colAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = colAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -509,8 +521,8 @@ TEST_CASE("Rabin-Karp pattern search") {
         std::vector<int> expected = {2, 5};
 
         std::vector<int> positions;
-        colAlgorithm->search(text, pattern);
-        REQUIRE_NOTHROW(positions = colAlgorithm->getSearchPositions());
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
 
         CHECK(positions == expected);
     }
@@ -520,8 +532,9 @@ TEST_CASE("Rabin-Karp pattern search") {
         QString pattern = "abc";
         std::vector<int> expected;
 
-        REQUIRE_NOTHROW(colAlgorithm->search(text, pattern));
-        std::vector<int> positions = colAlgorithm->getSearchPositions();
+        std::vector<int> positions;
+        context->executeStrategy(text, pattern);
+        REQUIRE_NOTHROW(positions = context->getSearchPositions());
         CHECK(positions == expected);
     }
 }
