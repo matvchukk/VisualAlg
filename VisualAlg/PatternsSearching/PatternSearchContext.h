@@ -15,7 +15,7 @@ class PatternSearchContext : public QObject
 
 private:
     PatternSearchStrategy* searchStrategy;
-
+    //std::vector<int> positions;
 public:
     PatternSearchContext(QObject* parent = nullptr) : QObject(parent), searchStrategy(nullptr)  {
     }
@@ -41,6 +41,18 @@ public:
         {
             searchStrategy->search(text, pattern);
         }
+    }
+    /// Returns the positions where the pattern was found in the text.
+    /// @param strategy The selected strategy
+    /// @returns A vector containing the positions where the pattern was found.
+    Q_INVOKABLE std::vector<int>& getSearchPositions()
+    {
+        if (searchStrategy)
+        {
+            return searchStrategy->getSearchPositions();
+        }
+        static std::vector<int> searchPositions = {0};
+        return searchPositions;
     }
 
 signals:
